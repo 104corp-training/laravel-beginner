@@ -9,4 +9,5 @@
 - Docker
 - Docker Compose
 
+- Test for Commit
 
