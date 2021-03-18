@@ -20,7 +20,7 @@
 ```
 -   課程的詳細資料的API
 ```
-/api/courses
+/api/course/{id}
 ```
 
 
