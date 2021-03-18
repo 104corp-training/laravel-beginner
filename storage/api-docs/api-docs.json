@@ -1,0 +1,33 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "L5 OpenApi",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "aaron@104.com.tw"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/class": {
+            "get": {
+                "tags": [
+                    "Class Tag"
+                ],
+                "summary": "\u8ab2\u7a0b\u5167\u5bb9 Summary",
+                "description": "\u8ab2\u7a0b\u5167\u5bb9 Description",
+                "operationId": "class",
+                "responses": {
+                    "200": {
+                        "description": "\u8acb\u6c42\u6210\u529f"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

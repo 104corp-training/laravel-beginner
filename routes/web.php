@@ -15,9 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/profile', function () {
-//    return view('profile');
-//});
+Route::get('/Add', function() {
+    return view('Class');
+});
 Route::get('/class', 'ClassController@index');
-
 Route::get('/class/cache', 'ClassController@cache');

@@ -20,14 +20,17 @@
             <div class="card-body">
                 @if (count($records))
                 <ul class="list-group">
+                    
+                    
                     @foreach ($records as $record)
                     @component('record')
                     @slot('title')
                     {{ $record['id'] }}
                     @endslot
-                    {{ $record['text'] }}
+                    <a href={{ $record['text'] }}>{{ $record['name'] }}</a>
                     @endcomponent
                     @endforeach
+                
                 </ul>
                 @endif
             </div>
