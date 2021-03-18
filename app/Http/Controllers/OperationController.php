@@ -95,8 +95,12 @@ class OperationController extends Controller
      */
     public function show($op_code)
     {
-        echo "Good to see U <3 <br>";
-        echo "Ur op code is: $op_code. Enjoy it<br>";
-        return view('operation_pot');
+        $isOpcodeValid = isset( $this->_dictionary[ $op_code ] );
+
+        if ($isOpcodeValid) {
+            return view('operation_valid', $this->_dictionary[ $op_code ]);
+        } else {
+            return view('operation_pot');
+        }
     }
 }
