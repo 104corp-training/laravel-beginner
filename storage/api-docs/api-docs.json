@@ -13,17 +13,46 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/api/course": {
+        "/api/courses": {
             "get": {
                 "tags": [
-                    "Course Tag"
+                    "Courses"
                 ],
                 "summary": "取得所有課程",
                 "description": "取得所有課程",
-                "operationId": "course",
+                "operationId": "courses",
                 "responses": {
                     "200": {
                         "description": "請求成功"
+                    }
+                }
+            }
+        },
+        "/api/course/{id}": {
+            "get": {
+                "tags": [
+                    "Course"
+                ],
+                "summary": "取得課程詳情",
+                "description": "取得課程詳情",
+                "operationId": "course",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Course id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功"
+                    },
+                    "404": {
+                        "description": "資源不存在"
                     }
                 }
             }

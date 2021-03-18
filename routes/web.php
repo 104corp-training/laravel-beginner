@@ -22,4 +22,6 @@ Route::get('/profile', 'ProfileController@index');
 
 Route::get('/profile/cache', 'ProfileController@cache');
 
-Route::get('/course', 'CourseController@index');
+Route::get('/courses', 'CourseController@index');
+
+Route::get('/course/{id}', 'CourseController@page');
