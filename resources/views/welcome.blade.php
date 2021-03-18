@@ -61,6 +61,28 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .second-title {
+                margin-top: 30px;
+                margin-bottom: 30px;
+                font-size: 30px;
+            }
+
+            .area-of-links {
+                width: 800px;
+            }
+
+            .links-bigger-space > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+                line-height: 50px;
+            }
+
         </style>
     </head>
     <body>
@@ -94,7 +116,32 @@
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+
+                <div class="second-title">
+                    課程連結
+                </div>
+
+                <div class="area-of-links">
+                    @if ( count($subjects) )
+                        <ul class="links-bigger-space">
+                            @foreach( $subjects as $subject)
+                                @component('url_record')
+                                    @slot('title')
+                                        {{ $subject['key'] }}
+                                    @endslot
+                                    @slot('url')
+                                        {{ $subject['url'] }}
+                                    @endslot
+                                @endcomponent
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
             </div>
         </div>
     </body>
+
+    <script>
+        
+    </script>
 </html>

@@ -21,3 +21,9 @@ Route::get('/', function () {
 Route::get('/profile', 'ProfileController@index');
 
 Route::get('/profile/cache', 'ProfileController@cache');
+
+Route::get('/', 'WelcomeController@index');
+
+Route::get('/operation/pot', function () {
+    return view('operation_pot');
+});
