@@ -20,55 +20,55 @@ class WelcomeController extends Controller
                 'subjects' => [
                     [
                         'key' => 'Git 入門篇',
-                        'url' => 'https://youtu.be/072tU1tamd0',
+                        'url' => '/operation/git',
                     ],
                     [
                         'key' => 'PHP 基礎課程',
-                        'url' => 'https://youtu.be/072tU1tamd0',
+                        'url' => '/operation/php',
                     ],
                     [
                         'key' => '認識資料庫 L1 + SQL語法',
-                        'url' => 'https://youtu.be/072tU1tamd0',
+                        'url' => '/operation/l1_sql',
                     ],
                     [
                         'key' => 'CI/CD 基礎概念',
-                        'url' => 'https://youtu.be/072tU1tamd0',
+                        'url' => '/operation/ci_cd',
                     ],
                     [
                         'key' => 'Laraval 程式設計',
-                        'url' => 'https://youtu.be/072tU1tamd0',
+                        'url' => '/operation/laravel',
                     ],
                     [
                         'key' => 'Docker 入門篇',
-                        'url' => 'https://youtu.be/072tU1tamd0',
+                        'url' => '/operation/docker',
                     ],
                     [
                         'key' => 'AWS 雲端基礎概念',
-                        'url' => 'https://youtu.be/072tU1tamd0',
+                        'url' => '/operation/aws_cloud',
                     ],
                     [
                         'key' => '密碼學基本原理＋弱點掃描概論',
-                        'url' => 'https://youtu.be/072tU1tamd0',
+                        'url' => '/operation/password',
                     ],
                     [
                         'key' => 'AWS Well Archiected',
-                        'url' => 'https://youtu.be/072tU1tamd0',
+                        'url' => '/operation/aws_well_arch',
                     ],
                     [
                         'key' => 'Web Apllication Security',
-                        'url' => 'https://youtu.be/072tU1tamd0',
+                        'url' => '/operation/was',
                     ],
                     [
                         'key' => 'AWS 持續整合與部署 CI/CD',
-                        'url' => 'https://youtu.be/072tU1tamd0',
+                        'url' => '/operation/aws_cicd',
                     ],
                     [
                         'key' => '設計模式基礎',
-                        'url' => 'https://youtu.be/072tU1tamd0',
+                        'url' => '/operation/mode',
                     ],
                     [
                         'key' => 'Search Engine',
-                        'url' => 'https://youtu.be/072tU1tamd0',
+                        'url' => '/operation/engine',
                     ],
 
                 ],
