@@ -9,11 +9,27 @@
 - Docker
 - Docker Compose
 
-## 所有課程的API文件
+## API
+-   API文件
 ```
 /api/documentation
 ```
-## 所有課程的頁面資料
+-   所有課程的API
 ```
-/course
+/api/courses
+```
+-   課程的詳細資料的API
+```
+/api/courses
+```
+
+
+## 頁面資料
+-   所有課程的頁面資料
+```
+/courses
+```
+-   課程的詳細資料
+```
+/course/{id}
 ```
