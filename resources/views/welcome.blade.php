@@ -69,10 +69,10 @@
             }
 
             .area-of-links {
-                width: 800px;
+                width: 900px;
             }
 
-            .links-bigger-space > a {
+            .class-link {
                 color: #636b6f;
                 padding: 0 25px;
                 font-size: 13px;
@@ -103,27 +103,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-
-                <div class="second-title">
-                    課程連結
+                    104 課程連結
                 </div>
 
                 <div class="area-of-links">
                     @if ( count($subjects) )
-                        <ul class="links-bigger-space">
+                    <dic>
+                        <ul>
                             @foreach( $subjects as $subject)
                                 @component('url_record')
                                     @slot('title')
@@ -135,6 +121,7 @@
                                 @endcomponent
                             @endforeach
                         </ul>
+                    <div>
                     @endif
                 </div>
             </div>
