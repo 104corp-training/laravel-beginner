@@ -11,13 +11,13 @@ class OperationController extends Controller
     /**
      * Use to get operation code and output the correct outout.
      * 
-     * @param int $op_code
+     * @param int $courseId
      * @return Response
      */
-    public function show($op_code)
+    public function show($courseId)
     {
-        $ORDER = 'select * from course where id = '.strval($op_code);
-        $data = DB::select($ORDER);
+        $DETAILORDER = 'select * from course where id = '.strval($courseId);
+        $data = DB::select($DETAILORDER);
 
         $ret = [];
 

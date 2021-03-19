@@ -48,19 +48,11 @@ class WelcomeController extends Controller
     {
         $data = DB::select('select * from course');
 
-        $dataType = [
-            'id',
-            'name',
-            'description',
-            'outline',
-        ];
-        $DATALEN = 4;
-
         foreach ($data as $elem) {
             $arr = [];
             $index = 0;
-            foreach ($elem as $selected) {
-                $arr[ $dataType [ $index ] ] = $selected;
+            foreach ($elem as $key => $value) {
+                $arr[ $key ] = $value;
                 $index += 1;
 
                 if ($index >= 4) {
