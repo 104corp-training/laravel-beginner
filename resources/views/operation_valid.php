@@ -62,6 +62,10 @@
                 width: 900px;
             }
 
+            .small-limit {
+                width: 100px;
+            }
+
             .classic-font {
                 color: #636b6f;
                 padding: 0 25px;
@@ -84,6 +88,14 @@
                 line-height: 50px;
             }
 
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 10px;
+            }
+
         </style>
     </head>
     <body>
@@ -93,29 +105,55 @@
                     <?php echo $name; ?>
                 </div>
 
-                <div class="subtitle">
-                    <?php 
-                        echo "課程描述";
-                    ?>
-                </div>
+                <div>
+                    <div class="subtitle">
+                        <?php echo "課程描述"; ?>
+                    </div>
 
-                <div class="classic-font m-b-md link-area-limit">
-                    <?php 
-                        echo $description; 
-                    ?>
-                </div>
+                    <div class="classic-font m-b-md link-area-limit">
+                        <?php echo $description; ?>
+                    </div>
 
-                <div class="subtitle">
-                    <?php 
-                        echo "課程大綱";
-                    ?>
-                </div>
+                    <div class="subtitle">
+                        <?php echo "課程大綱"; ?>
+                    </div>
 
-                <div class="classic-font m-b-md link-area-limit">
-                    <?php 
-                        echo $outline; 
-                    ?>
-                </div>            
+                    <div class="classic-font m-b-md link-area-limit">
+                        <?php 
+                            echo $outline; 
+                        ?>
+                    </div>          
+                <div>  
+
+                <div>
+                    <div class="subtitle">
+                        <?php echo "修課資訊" ?>
+                    </div> 
+                    <div class="m-b-md link-area-limit flex-center small-limit'">
+                        <?php
+                            if( $searchResult != false ) {
+                                echo "<table>";
+                                echo "<tr>
+                                    <th> First Name </th>
+                                    <th> Last Name </th>
+                                </tr>";
+                                foreach ($searchResult as $student) {
+                                    echo "<tr class='classic-font'>";
+                                    foreach ($student as $key => $value) {
+                                        $isOutout = ($key == "first_name") || ($key == "last_name");
+                                        if ($isOutout) {
+                                            echo "<td> $value </td>";
+                                        }
+                                    }
+                                    echo "</tr>";
+                                }
+                                echo "</table>";
+                            } else {
+                                echo "尚未有學生修習此課";
+                            }
+                        ?>
+                    </div>
+                </div>
 
                 <div>
                     <a class="classic-font" href="/"> 返回首頁 </a>
