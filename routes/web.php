@@ -26,3 +26,5 @@ Route::get('/profile/cache', 'ProfileController@cache');
 Route::get('/', 'WelcomeController@index');
 
 Route::get('/operation/{op_code}', 'OperationController@show');
+
+Route::get('/test', 'DatabaseController@index');

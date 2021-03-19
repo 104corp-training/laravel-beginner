@@ -113,10 +113,10 @@
                             @foreach( $subjects as $subject)
                                 @component('url_record')
                                     @slot('title')
-                                        {{ $subject['key'] }}
+                                        {{ $subject['name'] }}
                                     @endslot
                                     @slot('url')
-                                        {{ $subject['url'] }}
+                                        {{ $subject['id'] }}
                                     @endslot
                                 @endcomponent
                             @endforeach
