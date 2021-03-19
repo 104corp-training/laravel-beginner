@@ -46,29 +46,31 @@
 
             .title {
                 font-size: 84px;
+                font-weight: 600;
             }
 
             .subtitle {
-                font-size: 30px;
+                font-size: 20px;
+                font-weight: 400;
             }
 
             .m-b-md {
                 margin-bottom: 30px;
             }
 
-            .area-of-links {
+            .link-area-limit {
                 width: 900px;
             }
 
-            .class-link {
+            .classic-font {
                 color: #636b6f;
                 padding: 0 25px;
-                font-size: 13px;
+                font-size: 12px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
-                line-height: 50px;
+                line-height: 30px;
             }
 
             .bigger-font {
@@ -88,29 +90,35 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title">
-                    <?php echo $title; ?>
+                    <?php echo $name; ?>
                 </div>
 
-                <div class="subtitle m-b-md">
-                    <?php echo $description; ?>
+                <div class="subtitle">
+                    <?php 
+                        echo "課程描述";
+                    ?>
                 </div>
 
-                <?php
-                    if ($note === "(none)") {
-                        echo "<a class='bigger-font' href='/'> 無學習筆記資料，點此返回 </a>";
-                    } else {
-                        echo "<a class='bigger-font' href='$note'> 學習筆記連結 </a>";
-                    }
+                <div class="classic-font m-b-md link-area-limit">
+                    <?php 
+                        echo $description; 
+                    ?>
+                </div>
 
-                    if ($resource === "(none)") {
-                        echo "<a class='bigger-font' href='/'> 無學習資源資料，點此返回 </a>";
-                    } else {
-                        echo "<a class='bigger-font' href='$resource'> 學習資源連結 </a>";
-                    }
-                ?>                
+                <div class="subtitle">
+                    <?php 
+                        echo "課程大綱";
+                    ?>
+                </div>
+
+                <div class="classic-font m-b-md link-area-limit">
+                    <?php 
+                        echo $outline; 
+                    ?>
+                </div>            
 
                 <div>
-                    <a class="class-link" href="/"> 返回首頁 </a>
+                    <a class="classic-font" href="/"> 返回首頁 </a>
                 </div>
             </div>
         </div>

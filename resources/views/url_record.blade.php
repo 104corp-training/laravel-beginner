@@ -1,3 +1,3 @@
 <nobr>
-    <a class=class-link href="{{$url}}">{{$title}}</a>
+    <a class=class-link href="/operation/{{$url}}">{{$title}}</a>
 </nobr>

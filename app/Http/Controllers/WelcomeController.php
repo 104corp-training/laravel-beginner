@@ -17,13 +17,6 @@ class WelcomeController extends Controller
      */
     public function index(Request $request)
     {
-        /*
-        foreach ($this->_dictionary as $elem) {
-            echo "<h3>";
-            print_r($elem);
-            echo "</h3>";
-        }
-        */
         return view(
             'welcome',
             [

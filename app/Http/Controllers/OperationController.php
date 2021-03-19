@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use DB;
 
 class OperationController extends Controller
 {
@@ -15,10 +16,21 @@ class OperationController extends Controller
      */
     public function show($op_code)
     {
-        $isOpcodeValid = isset( $this->_dictionary[ $op_code ] );
+        $ORDER = 'select * from course where id = '.strval($op_code);
+        $data = DB::select($ORDER);
 
-        if ($isOpcodeValid) {
-            return view('operation_valid', $this->_dictionary[ $op_code ]);
+        $ret = [];
+
+        foreach ($data as $elem) {
+            foreach ($elem as $key => $value) {
+                $ret[ $key ] = $value;
+            }
+        }
+
+        $isRetValid = ( count($ret) != 0 );
+        
+        if ( $isRetValid ) {
+            return view('operation_valid', $ret);
         } else {
             return view('operation_pot');
         }
