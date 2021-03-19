@@ -127,7 +127,7 @@
 
                 <div>
                     <div class="subtitle">
-                        <?php echo "修課資訊" ?>
+                        <?php echo "修課人員" ?>
                     </div> 
                     <div class="m-b-md link-area-limit flex-center small-limit'">
                         <?php
