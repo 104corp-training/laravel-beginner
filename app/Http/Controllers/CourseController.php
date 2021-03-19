@@ -23,6 +23,18 @@ class CourseController extends Controller
     public function page($id)
     {
         $course = DB::table('Course')->where('id', $id)->get();
-        return view('course',['records' => [$course]]);
+        $exam = DB::table('Course_exam')
+            ->join('student', 'student_id', '=', 'student.id')
+            ->where('course_id', $id)
+            ->select('Course_exam.course_exam_id','Course_exam.course_exam_score','student.first_name','student.last_name')
+            ->get();
+
+        return view(
+            'course',
+            [
+                'records' => [$course],
+                'exams' => [$exam]
+            ]
+        );
     }
 }

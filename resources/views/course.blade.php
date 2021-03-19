@@ -29,6 +29,29 @@
                         <li class="list-group-item">查無此課程</li>
                     @endif
                 </ul>
+                <h5 class="card-header">學生成績</h5>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">小考</th>
+                        <th scope="col">姓名</th>
+                        <th scope="col">成績</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @if (count($exams[0]))
+                            @foreach ($exams[0] as $exam)
+                                <tr>
+                                    <td>{{ $exam->course_exam_id }}</td>
+                                    <td>{{ $exam->first_name }} {{ $exam->last_name }}</td>
+                                    <td>{{ $exam->course_exam_score }} </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr><td>無任何考試</td></tr>
+                        @endif
+                    </tbody>
+                </table>
             </div>
         </div>
     </body>
