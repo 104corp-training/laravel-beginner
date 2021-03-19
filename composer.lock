@@ -1450,6 +1450,10 @@
                 "predis",
                 "redis"
             ],
+            "support": {
+                "issues": "https://github.com/predis/predis/issues",
+                "source": "https://github.com/predis/predis/tree/v1.1.6"
+            },
             "funding": [
                 {
                     "url": "https://github.com/sponsors/tillkruss",
