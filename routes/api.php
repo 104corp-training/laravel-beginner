@@ -20,3 +20,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/profile/info', function () {
     return ['time' => Carbon\Carbon::now()];
 });
+
+Route::middleware(['apiToken'])->prefix('courses')->group(function () {
+    Route::get('/', 'CourseController@index');
+    Route::post('/', 'CourseController@store');
+    Route::get('/{courseId}', 'CourseController@show');
+    Route::put('/{courseId}', 'CourseController@update');
+    Route::delete('/{courseId}', 'CourseController@destroy');
+});

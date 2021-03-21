@@ -24,6 +24,11 @@ class Profile extends Model
         'email',
         'github',
     ];
+    protected $attributes = [
+        'name' => '',
+        'email' => '',
+        'github' => '',
+    ];
 
     /**
      * @return string
