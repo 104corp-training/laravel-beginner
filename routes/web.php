@@ -20,6 +20,6 @@ Route::get('/', function () {
 //Route::get('/profile', function () {
 //    return view('profile');
 //});
-Route::get('/profile/{name?}', 'ProfileController@index');
+Route::get('/course/{courseAddr?}', 'CourseController@index');
 
 Route::get('/profile/cache', 'ProfileController@cache');
