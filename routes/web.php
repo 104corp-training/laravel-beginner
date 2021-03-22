@@ -1,5 +1,5 @@
 <?php
-
+use app\Models\Course;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/Add', function() {
-    return view('Class');
-});
-Route::get('/class', 'ClassController@index');
-Route::get('/class/cache', 'ClassController@cache');
+Route::get('/class/{id}', 'pagesController@index');
+Route::get('/class', 'classController@index');
+Route::get('/class/cache', 'classController@cache');

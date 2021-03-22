@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="robots" content="noindex, nofollow">
     <meta name="robots" content="noarchive">
-    <title>Profile</title>
+    <title>Course info</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -16,21 +16,14 @@
 <body>
     <div class="container">
         <div class="card">
-            <h5 class="card-header">Class</h5>
+            <h5 class="card-header">學習歷程</h5>
             <div class="card-body">
-                @if (count($records))
+                @if ($pages)
                 <ul class="list-group"> 
-                    @foreach ($records as $record)
+                    <h5>分數：{{ $pages->point }}<br></h5>
+                    <h5>學習內容：{{ $pages->content }}</h5>
                     
-                    @component('record')
-                    @slot('title')
-                    {{ $record->id }}
-                    @endslot
                     
-                    <a href=/class/{{ $record->id}}>{{ $record->name }}</a>
-                    @endcomponent
-                    @endforeach
-                
                 </ul>
                 @endif
             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class ClassController extends Controller
 {
@@ -14,8 +15,17 @@ class ClassController extends Controller
      */
     public function index(Request $request)
     {
+        $records = DB::table('Course')->get();
         return view(
             'class',
+            compact('records')
+            
+        );
+    }
+    
+}
+/*
+'class',
             [
                 'records' => [
                     [
@@ -89,8 +99,4 @@ class ClassController extends Controller
                         'name' => 'Crytography'
                     ],
                 ],
-            ],
-        );
-    }
-    
-}
+            ],*/
