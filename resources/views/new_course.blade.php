@@ -48,11 +48,4 @@
             <a href="/"> 返回首頁 </a>
         </div>
     </body>
-    
-    <script>
-        function submit()
-        {
-            ;
-        }
-    </script>
 </html>

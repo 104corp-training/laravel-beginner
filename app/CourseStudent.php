@@ -67,8 +67,6 @@ class CourseStudent extends Model
         $student_fname = $student->first_name;
         $student_lname = $student->last_name;
 
-        //$s = "'".$course." ".$student_fname." ".$student_lname."'";
-
         self::insert([
             'course_id' => $course_id,
             'course_name' => $course_name,
@@ -76,7 +74,5 @@ class CourseStudent extends Model
             'student_fname' => $student_fname,
             'student_lname' => $student_lname,
         ]);
-
-        //echo "<script language='javascript'> alert($s) </script>";
     }
 }
