@@ -42,4 +42,16 @@ class Course extends Model
             'student_id'
         );
     }
+
+    static public function getAllCourseName()
+    {
+        $ret = [];
+        $courses = self::all();
+
+        foreach ($courses as $course) {
+            $ret[] = $course->name;
+        }
+
+        return $ret;
+    }
 }

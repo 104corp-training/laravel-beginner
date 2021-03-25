@@ -84,6 +84,16 @@
                 line-height: 50px;
             }
 
+            .white-w {
+                color: #636b6f;
+                padding: 0 25px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+                line-height: 50px;
+            }
+
         </style>
     </head>
     <body>
@@ -124,6 +134,10 @@
                         </ul>
                     <div>
                     @endif
+                </div>
+
+                <div class="second-title">
+                    <a href="/new_class" class="white-w"> 選課連結 </a>
                 </div>
             </div>
         </div>

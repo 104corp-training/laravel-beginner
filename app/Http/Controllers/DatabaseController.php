@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Http\Controllers\Controller;
+use App;
+use App\CoursePlayerClass;
 
 class DatabaseController extends Controller
 {
@@ -26,5 +28,10 @@ class DatabaseController extends Controller
 
         //return view('user.index', ['users' => $users]);
         echo "<h1>Hello World</h1>";
+    }
+
+    public function test()
+    {
+        CoursePlayerClass::index();
     }
 }

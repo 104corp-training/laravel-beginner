@@ -20,4 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/profile/info', function () {
     return ['time' => Carbon\Carbon::now()];
 });
-Route::get('/profile/test', 'CourseController@apiAction');
+//Route::get('/profile/test', 'CourseController@apiAction');

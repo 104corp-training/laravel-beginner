@@ -72,4 +72,16 @@ class Student extends Model
             'course_id'
         );
     }
+
+    static public function getAllFullName()
+    {
+        $ret = [];
+        $students = self::all();
+
+        foreach ($students as $student) {
+            $ret[] = $student->getFullNameAttribute();
+        }
+
+        return $ret;
+    }
 }

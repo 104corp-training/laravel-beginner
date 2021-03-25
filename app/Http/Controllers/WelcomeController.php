@@ -15,7 +15,7 @@ class WelcomeController extends Controller
      * @param Request $request
      * @return Factory|View
      */
-    public function index(Request $request)
+    public function index()//(Request $request)
     {
         return view(
             'welcome',

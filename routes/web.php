@@ -1,5 +1,7 @@
 <?php
 
+use App\CoursePlayerClass;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,4 +29,27 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('/operation/{op_code}', 'OperationController@show');
 
-Route::get('/test', 'DatabaseController@index');
+Route::get('/new_class', 'NewCourseController@index');
+
+Route::post('/new_class/submit', 'NewCourseController@submit');
+
+//Route::post('/new_class/submit', 'WelcomeController@index');
+
+Route::get('/new', 'DatabaseController@test');
+
+//Route::get('/test', 'DatabaseController@index');
+
+Route::get('/read',function(){
+    $posts = CoursePlayerClass::all();
+
+    //$dd = CoursePlayerClass::
+    
+    foreach ($posts as $post) {
+        //return $post;
+        foreach ($post as $pos) { 
+        echo '<h3>';
+        var_dump($pos);
+        echo '</h3>';
+        }
+    };
+});
