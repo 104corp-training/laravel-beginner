@@ -67,6 +67,17 @@ class CourseStudent extends Model
         $student_fname = $student->first_name;
         $student_lname = $student->last_name;
 
+        $courseStudent = new CourseStudent;
+
+        $courseStudent->course_id = $course_id;
+        $courseStudent->course_name = $course_name;
+        $courseStudent->student_id = $student_id;
+        $courseStudent->student_fname = $student_fname;
+        $courseStudent->student_lname = $student_lname;
+
+        $courseStudent->save();
+
+        /*
         self::insert([
             'course_id' => $course_id,
             'course_name' => $course_name,
@@ -74,5 +85,6 @@ class CourseStudent extends Model
             'student_fname' => $student_fname,
             'student_lname' => $student_lname,
         ]);
+        */
     }
 }

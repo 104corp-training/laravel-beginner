@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\CourseStudent;
 use App\User;
 use App\Http\Controllers\Controller;
-use DB;
+use App\Models\Course;
 
 class OperationController extends Controller
 {
@@ -16,62 +17,23 @@ class OperationController extends Controller
      */
     public function show($courseId)
     {
-        $DETAILSELECT = 'select * from course where id = '.strval($courseId);
-        $data = DB::select($DETAILSELECT);
-
         $ret = [];
-
-        foreach ($data as $elem) {
-            foreach ($elem as $key => $value) {
-                $ret[ $key ] = $value;
-            }
-        }
-
-        $searchResult = $this->getStudentByCourse($courseId);
-
-        $isRetNotEmpty = ( count($ret) != 0 );
         
-        if ( $isRetNotEmpty ) {
-            $ret[ 'searchResult' ] = $searchResult;
-            return view('operation_valid', $ret);
+        $searchResult = CourseStudent::where("course_id", "=", $courseId)->get();
+        $course = Course::find($courseId);
+
+        $isSearchNotEmpty = !(count($searchResult) == 0);
+        $isSearchValid = ($course != null) ? true : false;
+        
+        if ($isSearchValid) {
+            $ret[ 'searchResult' ] = $isSearchNotEmpty ? ($searchResult) : false;
+            $ret[ 'name' ] = $course->name;
+            $ret[ 'description'] = $course->description;
+            $ret[ 'outline' ] = $course->outline;
+
+        return view('operation_valid', $ret);
         } else {
             return view('operation_pot');
         }
-    }
-
-    /**
-     * Get the information of students by course id
-     * 
-     * @param int $courseId
-     * @return array
-     */
-    public function getStudentByCourse($courseId) {
-        $DETAILSELECT = 'select * from student_course where course_id = '.strval($courseId);
-        $data = DB::select($DETAILSELECT);
-
-        $studentId = [];
-
-        foreach ($data as $elem) {
-            foreach ($elem as $key => $value) {
-                if ($key === 'student_id') {
-                    $studentId[] = $value;
-                }
-            }
-        }
-
-        $isStuIdEmpty = ( count($studentId) != 0);
-
-        if ( $isStuIdEmpty ) {
-            $studentId = $this->getStudentById($studentId);
-            return $studentId;
-        } else {
-            return false;
-        }
-    }
-
-    public function getStudentById($id_array) {
-        $sql = 'select * from student where id in (' . implode(',', $id_array) . ')';
-        $data = DB::select($sql);
-        return $data;
     }
 }

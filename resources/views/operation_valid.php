@@ -136,15 +136,15 @@
                                 echo "<tr>
                                     <th> First Name </th>
                                     <th> Last Name </th>
+                                    <th> 修課時間 </th>
                                 </tr>";
                                 foreach ($searchResult as $student) {
                                     echo "<tr class='classic-font'>";
-                                    foreach ($student as $key => $value) {
-                                        $isOutout = ($key == "first_name") || ($key == "last_name");
-                                        if ($isOutout) {
-                                            echo "<td> $value </td>";
-                                        }
-                                    }
+
+                                    echo "<td> $student->student_fname </td>";
+                                    echo "<td> $student->student_lname </td>";
+                                    echo "<td> $student->created_at </td>";
+                                    
                                     echo "</tr>";
                                 }
                                 echo "</table>";
