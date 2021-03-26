@@ -42,4 +42,19 @@ class Course extends Model
             'student_id'
         );
     }
+
+    /**
+     * 得到某一堂課的所有學生的成績
+     *
+     * @var array
+     */
+    public function exams()
+    {
+        return $this->belongsToMany(
+            Student::class,
+            'exam',
+            'course_id',
+            'student_id'
+        )->withPivot('exam_score','exam_id');
+    }
 }

@@ -16,14 +16,14 @@
             <div class="card">
                 <h5 class="card-header">課程資訊</h5>
                 <ul class="list-group">
-                    @if (count($records[0]))
-                        @foreach ($records[0] as $course)
-                            <li class="list-group-item">Id:{{ $course->id }}</li>
-                            <li class="list-group-item">Name:{{ $course->name }}</li>
-                            <li class="list-group-item">Description:<br>{{ $course->description }}</li>
-                            <li class="list-group-item">Outline:<br>{{ $course->outline }}</li>
-                            <li class="list-group-item">Created_at:<br>{{ $course->created_at }}</li>
-                            <li class="list-group-item">Updated_at:<br>{{ $course->updated_at }}</li>
+                    @if (count($records))
+                        @foreach ($records as $course)
+                            <li class="list-group-item">Id:{{ $course['id'] }}</li>
+                            <li class="list-group-item">Name:{{ $course['name'] }}</li>
+                            <li class="list-group-item">Description:<br>{{ $course['description'] }}</li>
+                            <li class="list-group-item">Outline:<br>{{ $course['outline'] }}</li>
+                            <li class="list-group-item">Created_at:<br>{{ $course['created_at'] }}</li>
+                            <li class="list-group-item">Updated_at:<br>{{ $course['updated_at'] }}</li>
                         @endforeach
                     @else
                         <li class="list-group-item">查無此課程</li>
@@ -39,16 +39,18 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @if (count($exams[0]))
-                            @foreach ($exams[0] as $exam)
+                        @if (count($exams))
+                            @foreach ($exams as $exam)
                                 <tr>
-                                    <td>{{ $exam->course_exam_id }}</td>
-                                    <td>{{ $exam->first_name }} {{ $exam->last_name }}</td>
-                                    <td>{{ $exam->course_exam_score }} </td>
+                                    <td>{{ $exam['pivot']['exam_id'] }}</td>
+                                    <td>{{ $exam['first_name'] }} {{ $exam['last_name'] }}</td>
+                                    <td>{{ $exam['pivot']['exam_score'] }}</td>
                                 </tr>
                             @endforeach
                         @else
-                            <tr><td>無任何考試</td></tr>
+                            <tr>
+                                <td>無任何考試</td>
+                            </tr>
                         @endif
                     </tbody>
                 </table>

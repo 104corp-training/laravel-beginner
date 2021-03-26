@@ -6,35 +6,42 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use App\Models\Course;
+use App\Models\Exam;
+use Exception;
+use App\Exceptions\APIException;
 
 class CourseController extends Controller
 {
     /**
+     * 回傳所有課程資訊
      * @param Request $request
-     * @return Factory|View
+     * @return View
      */
-
     public function index(Request $request)
     {
-        $courses = DB::table('Course')->get();
-        return view('courses', ['records' => [$courses]]);
+        $courses = Course::all()->toArray();
+        $result = ['records' => $courses];
+        return view('courses', $result);
     }
 
+    /**
+     * 回傳單一課程資訊
+     * @int $id
+     * @return View
+     */
     public function page($id)
     {
-        $course = DB::table('Course')->where('id', $id)->get();
-        $exam = DB::table('Course_exam')
-            ->join('student', 'student_id', '=', 'student.id')
-            ->where('course_id', $id)
-            ->select('Course_exam.course_exam_id','Course_exam.course_exam_score','student.first_name','student.last_name')
-            ->get();
+        if (! $course = Course::find($id)) {
+            return '課程找不到';
+        }
 
-        return view(
-            'course',
-            [
-                'records' => [$course],
-                'exams' => [$exam]
-            ]
-        );
+        $courses = Course::find($id)->where('id','=',$id)->get()->toArray();
+        $exams = Course::find($id)->exams()->get()->toArray();
+        $result = [
+            'records' => $courses,
+            'exams' => $exams
+        ];
+        return view('course', $result);
     }
 }

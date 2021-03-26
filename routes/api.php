@@ -29,7 +29,15 @@ Route::get('/courses', function () {
     return $users;
 });
 
-Route::get('/course/{id}', function($id){
+Route::get('/courses/{id}', function($id){
     $users = DB::table('Course')->where('id',$id)->get();
     return $users;
+});
+
+Route::prefix('exams')->group(function () {
+    Route::get('/', 'ExamController@index');
+    Route::post('/', 'ExamController@store');
+    Route::get('/{examId}', 'ExamController@show');
+    Route::put('/{examId}', 'ExamController@update');
+    Route::delete('/{examId}', 'ExamController@destroy');
 });

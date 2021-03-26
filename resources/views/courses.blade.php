@@ -17,8 +17,10 @@
                 <h5 class="card-header">Courses</h5>
                 @if (count($records))
                     <ul class="list-group">
-                        @foreach ($records[0] as $course)
-                            <li class="list-group-item"><a href="/course/{{ $course->id }}">{{ $course->id }} - {{ $course->name }}</a></li>
+                        @foreach ($records as $course)
+                            <li class="list-group-item">
+                                <a href="/course/{{ $course['id'] }}">{{ $course['id'] }} - {{ $course['name'] }}</a>
+                            </li>
                         @endforeach
                     </ul>
                 @endif
