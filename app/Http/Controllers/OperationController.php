@@ -19,8 +19,9 @@ class OperationController extends Controller
     {
         $ret = [];
         
-        $searchResult = CourseStudent::where("course_id", "=", $courseId)->get();
+        //$searchResult = CourseStudent::where("course_id", "=", $courseId)->get();
         $course = Course::find($courseId);
+        $searchResult = $course->attendStudents;
 
         $isSearchNotEmpty = !(count($searchResult) == 0);
         $isSearchValid = ($course != null) ? true : false;

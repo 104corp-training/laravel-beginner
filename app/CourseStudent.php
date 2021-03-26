@@ -15,49 +15,6 @@ class CourseStudent extends Model
      * @var string
      */
     protected $table = 'course_player';
-    //protected $table = 'student_course';
-
-    static public function index() 
-    {
-        echo "<h1>CPC Index</h1>";
-
-        $arr = Course::getAllCourseName();
-
-        foreach ($arr as $elem) {
-            echo "<h5>$elem</h5>";
-        }
-        
-        return;
-
-        //$body = self::get();
-        $body = Student::all();
-
-        foreach ($body as $elem) {
-            //echo "<h3>$elem->getFullNameAttribute()</h3>";
-            $s = $elem->getFullNameAttribute();
-            echo "<h4>$s</h4>";
-        }
-        //$s = $body->getFullNameAttribute();
-
-        //var_dump($s);
-
-        return;
-
-        foreach ($body as $elem) {
-                echo "<h3>";
-                $t = gettype($elem);
-                if ($t == 'array') {
-                    foreach ($elem as $key => $value) {
-                        echo " [$key => $value] ";
-                    }
-                } else if ($t == 'boolean') {
-                    echo ($elem) ? "True" : "False";
-                } else {
-                    echo $elem;
-                }
-                echo "</h3>";
-        }
-    }
 
     static public function appendCourse(int $course_id, int $student_id)
     {
@@ -76,15 +33,23 @@ class CourseStudent extends Model
         $courseStudent->student_lname = $student_lname;
 
         $courseStudent->save();
+    }
 
-        /*
-        self::insert([
-            'course_id' => $course_id,
-            'course_name' => $course_name,
-            'student_id' => $student_id,
-            'student_fname' => $student_fname,
-            'student_lname' => $student_lname,
-        ]);
-        */
+    public function findStudent()
+    {
+        return $this->belongsTo(
+            Student::class,
+            'id',
+            'student_id'
+        );
+    }
+    
+    public function findCourse()
+    {
+        return $this->belongsTo(
+            Course::class,
+            'id',
+            'course_id'
+        );
     }
 }

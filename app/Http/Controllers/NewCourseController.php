@@ -38,4 +38,9 @@ class NewCourseController extends Controller
         $body = new WelcomeController;
         return $body->index();
     }
+
+    public function student()
+    {
+        return $this->hasOne('App\Student');
+    }
 }

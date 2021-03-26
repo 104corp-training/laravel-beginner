@@ -1,6 +1,5 @@
 <?php
 
-use App\CoursePlayerClass;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +20,10 @@ Route::get('/', function () {
 //    return view('profile');
 //});
 
+use App\CourseStudent;
+use App\Models\Course;
+use App\Models\Student;
+
 Route::get('/profile', 'ProfileController@index');
 
 Route::get('/profile/cache', 'ProfileController@cache');
@@ -40,16 +43,13 @@ Route::get('/new', 'DatabaseController@test');
 //Route::get('/test', 'DatabaseController@index');
 
 Route::get('/read',function(){
-    $posts = CoursePlayerClass::all();
-
-    //$dd = CoursePlayerClass::
+    $body = Course::all();
     
-    foreach ($posts as $post) {
-        //return $post;
-        foreach ($post as $pos) { 
-        echo '<h3>';
-        var_dump($pos);
-        echo '</h3>';
+    foreach ($body as $elem) {
+        $elem = $elem->courses;
+        foreach ($elem as $key => $value) {
+            echo "<h4>", gettype($value), "</h4>";
+            echo "<h3> $key => $value </h3>";
         }
-    };
+    }
 });

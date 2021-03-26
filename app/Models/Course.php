@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\CourseStudent;
 use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
@@ -53,5 +54,13 @@ class Course extends Model
         }
 
         return $ret;
+    }
+
+    public function attendStudents()
+    {
+        return $this->hasMany(
+            CourseStudent::class,
+            'course_id'
+        );
     }
 }
