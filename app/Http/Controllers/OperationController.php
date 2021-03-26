@@ -15,11 +15,10 @@ class OperationController extends Controller
      * @param int $courseId
      * @return Response
      */
-    public function show($courseId)
+    static public function show($courseId)
     {
         $ret = [];
         
-        //$searchResult = CourseStudent::where("course_id", "=", $courseId)->get();
         $course = Course::find($courseId);
         $searchResult = $course->attendStudents;
 

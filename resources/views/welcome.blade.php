@@ -137,7 +137,7 @@
                 </div>
 
                 <div class="second-title">
-                    <a href="/new_class" class="white-w"> 選課連結 </a>
+                    <a href="/new_class/index" class="white-w"> 選課連結 </a>
                 </div>
             </div>
         </div>

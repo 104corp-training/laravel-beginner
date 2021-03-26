@@ -6,11 +6,10 @@ use App\CourseStudent;
 use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Http\Request;
-//use App\Http\Controllers\WelcomeController;
 
 class NewCourseController extends Controller
 {
-    public function index()
+    static public function mainPage()
     {
         $courses_array = Course::getAllCourseName();
         $students_array = Student::getAllFullName();

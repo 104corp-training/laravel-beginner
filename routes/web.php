@@ -11,37 +11,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
-//Route::get('/profile', function () {
-//    return view('profile');
-//});
-
 use App\CourseStudent;
+use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Student;
 
-Route::get('/profile', 'ProfileController@index');
-
-Route::get('/profile/cache', 'ProfileController@cache');
-
 Route::get('/', 'WelcomeController@index');
 
-Route::get('/operation/{op_code}', 'OperationController@show');
-
-Route::get('/new_class', 'NewCourseController@index');
+Route::get('/{operation}/{sub_operation}', 'Controller@getRequest');
 
 Route::post('/new_class/submit', 'NewCourseController@submit');
 
-//Route::post('/new_class/submit', 'WelcomeController@index');
-
-Route::get('/new', 'DatabaseController@test');
-
-//Route::get('/test', 'DatabaseController@index');
-
+/*
 Route::get('/read',function(){
     $body = Course::all();
     
@@ -53,3 +34,9 @@ Route::get('/read',function(){
         }
     }
 });
+
+Route::get('/profile', 'ProfileController@index');
+
+Route::get('/profile/cache', 'ProfileController@cache');
+
+*/
