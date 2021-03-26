@@ -21,10 +21,27 @@ Route::get('/profile/info', function () {
     return ['time' => Carbon\Carbon::now()];
 });
 
-Route::middleware(['apiToken'])->prefix('courses')->group(function () {
+Route::get('/course/{id}', function( $id ){
+    $contents = DB::table('course')->where( 'id','=',strval($id) )->get();
+    return $contents[0]->name . $contents[0]->id ;
+});
+
+
+//apiToken
+Route::middleware([])->prefix('courses')->group(function () {
     Route::get('/', 'CourseController@index');
     Route::post('/', 'CourseController@store');
     Route::get('/{courseId}', 'CourseController@show');
     Route::put('/{courseId}', 'CourseController@update');
     Route::delete('/{courseId}', 'CourseController@destroy');
+});
+
+Route::middleware([])->prefix('comments')->group(function () {
+
+    Route::get('/', 'CommentController@index');
+    Route::post('/', 'CommentController@store');
+    Route::get('/{courseId}', 'CommentController@show');
+    Route::put('/{courseId}', 'CommentController@update');
+    Route::delete('/{courseId}', 'CommentController@destroy');
+
 });

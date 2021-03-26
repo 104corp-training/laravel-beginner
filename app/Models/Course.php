@@ -43,4 +43,15 @@ class Course extends Model
             'student_id'
         );
     }
+
+    public function comment()
+    {
+        return $this->belongsTomany(
+            Student::class,
+            'comment',
+            'comment_id',
+            'edit_id'
+        )->withPivot('text');
+    }
+
 }
