@@ -20,7 +20,9 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('/{operation}/{sub_operation}', 'Controller@getRequest');
 
-Route::post('/new_class/submit', 'NewCourseController@submit');
+Route::post('/{operation}', 'Controller@postRequest');
+
+//Route::post('/new_class/submit', 'NewCourseController@submit');
 
 /*
 Route::get('/read',function(){

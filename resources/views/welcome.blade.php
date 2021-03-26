@@ -137,7 +137,11 @@
                 </div>
 
                 <div class="second-title">
-                    <a href="/new_class/index" class="white-w"> 選課連結 </a>
+                    <a href="/submit/newCourse" class="white-w"> 選課連結 </a>
+                </div>
+
+                <div class="second-title">
+                    <a href="/submit/newComment" class="white-w"> 評論連結 </a>
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title> 選課 </title>
+        <title> 新增評論 </title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
         </style>
     </head>
     <body>
-        <div><form action="/new_course" method="post">
+        <div><form action="/new_comment" method="post">
             {{ csrf_field() }}
             <?php
                 $isStudentsValid = count($students);
@@ -42,6 +42,19 @@
                 } else {
                     echo "<h3> 錯誤：課程為空 </h3>";
                 }
+
+                echo "<label for='select_score'> 評分 </label>";
+                echo "<select name='select_score'>";
+                $MAX_SCORE = 10;
+                for ($i=0; $i<=$MAX_SCORE; $i++) {
+                    $key = "'".strval($i)."'";
+                    $key_num = strval($i)." / 10";
+                    echo "<option value=$key> $key_num </option>";
+                }
+                echo "</select>";
+                echo "</p>";
+                echo "<label for'comment_content'> 評論 </label>";
+                echo "<input name='comment_content' type='text' size='70' maxlength='35'>";
                 echo "</p>";
             ?>
             <input type='submit' value='送出表單'>

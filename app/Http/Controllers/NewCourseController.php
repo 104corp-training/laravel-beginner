@@ -20,7 +20,7 @@ class NewCourseController extends Controller
         ]);
     }
 
-    public function submit(Request $request)
+    static public function submit(Request $request)
     {
         $course = $_POST['select_course'];
         $student = $_POST['select_student'];
