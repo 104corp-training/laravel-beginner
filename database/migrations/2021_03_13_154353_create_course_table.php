@@ -15,6 +15,7 @@ class CreateCourseTable extends Migration
     {
         Schema::create('course', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('course_id');
             $table->string('name', 100);
             $table->string('description', 255);
             $table->text('outline');
@@ -32,6 +33,9 @@ class CreateCourseTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course');
+        Schema::dropIfExists('course', function(Blueprint $table){
+            $table->dropColumn('course_id');
+        });
+        
     }
 }

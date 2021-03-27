@@ -4,6 +4,7 @@ use App\Exceptions\APIException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CourseController;
 
 
 /*
@@ -23,6 +24,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/profile/info', function () {
     return ['time' => Carbon\Carbon::now()];
 });
-Route::get('/course/{courseAddr?}', 'CourseController@apiIndex');
+//Route::get('/course/{courseAddr?}', 'CourseController@apiIndex');
 
-Route::post('course/{name?}', 'CourseController@store');
+// Route::post('course/{name?}', 'CourseController@store');
+
+Route::apiResource('hunter', HunterController :: class);

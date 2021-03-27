@@ -66,13 +66,13 @@ return [
             'read' => [
                 'host' => env('DB_HOST', '127.0.0.1'),
                 'username' => env('DB_USERNAME', 'root'),
-                'password' => env('DB_PASSWORD', '123456'),
+                'password' => env('DB_PASSWORD', 'root'),
                 'port' => env('DB_PORT', '3306'),
             ],
             'write' => [
                 'host' => env('DB_HOST', '127.0.0.1'),
                 'username' => env('DB_USERNAME', 'root'),
-                'password' => env('DB_PASSWORD', '123456'),
+                'password' => env('DB_PASSWORD', 'root'),
                 'port' => env('DB_PORT', '3306'),
             ],
             'driver' => 'mysql',

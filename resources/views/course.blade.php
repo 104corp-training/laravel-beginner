@@ -31,7 +31,7 @@ jquery.min.js"></script>
                 <?php
                 $output = "";
                 foreach ($courseData as $id => $data) {
-                    if (true) {
+                    if ($id != request()->courseAddr) {
                         $output .= '<li class="list-group-item"><a href="/course/' . $id . '">' . $data['name'] . '</a></li>';
                     }
                 }
