@@ -1,15 +1,8 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "L5 OpenApi",
-        "description": "L5 Swagger OpenApi description",
-        "contact": {
-            "email": "developer@example.com"
-        },
-        "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-        },
+        "title": "laravel-beginner Api",
+        "description": "laravel-beginner Api",
         "version": "1.0.0"
     },
     "paths": {
@@ -18,30 +11,326 @@
                 "tags": [
                     "Courses"
                 ],
-                "summary": "取得所有課程",
-                "description": "取得所有課程",
+                "summary": "取得所有課程資訊",
+                "description": "取得所有課程資訊",
                 "operationId": "courses",
                 "responses": {
                     "200": {
                         "description": "請求成功"
                     }
                 }
-            }
-        },
-        "/api/course/{id}": {
-            "get": {
+            },
+            "post": {
                 "tags": [
-                    "Course"
+                    "Courses"
                 ],
-                "summary": "取得課程詳情",
-                "description": "取得課程詳情",
-                "operationId": "course",
+                "summary": "新增課程資訊",
+                "description": "新增課程資訊",
+                "operationId": "courses",
                 "parameters": [
                     {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Course id",
+                        "name": "name",
+                        "in": "query",
+                        "description": "課程名稱",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "描述",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "outline",
+                        "in": "query",
+                        "description": "大綱",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "資源成功建立"
+                    },
+                    "422": {
+                        "description": "驗證錯誤"
+                    }
+                }
+            }
+        },
+        "/api/courses/{courseId}": {
+            "get": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "取得一筆課程資訊",
+                "description": "取得一筆課程資訊",
+                "operationId": "courses",
+                "parameters": [
+                    {
+                        "name": "courseId",
+                        "in": "path",
+                        "description": "courseId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功"
+                    },
+                    "404": {
+                        "description": "找不到對應課程"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "刪除課程資訊",
+                "description": "刪除課程資訊",
+                "operationId": "courses",
+                "parameters": [
+                    {
+                        "name": "courseId",
+                        "in": "path",
+                        "description": "courseId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "刪除成功"
+                    },
+                    "404": {
+                        "description": "課程找不到"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "更新課程資訊",
+                "description": "更新課程資訊",
+                "operationId": "courses",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "課程名稱",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "描述",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "outline",
+                        "in": "query",
+                        "description": "大綱",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功"
+                    },
+                    "404": {
+                        "description": "資源不存在"
+                    }
+                }
+            }
+        },
+        "/api/exams": {
+            "get": {
+                "tags": [
+                    "Exams"
+                ],
+                "summary": "取得所有考試資訊",
+                "description": "取得所有考試資訊",
+                "operationId": "exams",
+                "responses": {
+                    "200": {
+                        "description": "請求成功"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Exams"
+                ],
+                "summary": "新增考試資訊",
+                "description": "新增考試資訊",
+                "operationId": "exams",
+                "parameters": [
+                    {
+                        "name": "student_id",
+                        "in": "query",
+                        "description": "學生id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "course_id",
+                        "in": "query",
+                        "description": "課程id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "exam_id",
+                        "in": "query",
+                        "description": "考試id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "exam_score",
+                        "in": "query",
+                        "description": "考試成績",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "考試資訊新增成功"
+                    },
+                    "422": {
+                        "description": "驗證錯誤"
+                    }
+                }
+            }
+        },
+        "/api/exams/{examId}": {
+            "get": {
+                "tags": [
+                    "Exams"
+                ],
+                "summary": "取得一筆考試資訊",
+                "description": "取得一筆考試資訊",
+                "operationId": "exams",
+                "parameters": [
+                    {
+                        "name": "examId",
+                        "in": "path",
+                        "description": "examId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功"
+                    },
+                    "404": {
+                        "description": "找不到對應考試"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Exams"
+                ],
+                "summary": "刪除考試資訊",
+                "description": "刪除考試資訊",
+                "operationId": "exams",
+                "parameters": [
+                    {
+                        "name": "examId",
+                        "in": "path",
+                        "description": "examId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "刪除成功"
+                    },
+                    "404": {
+                        "description": "考試找不到"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Exams"
+                ],
+                "summary": "更新考試資訊",
+                "description": "更新考試資訊",
+                "operationId": "exams",
+                "parameters": [
+                    {
+                        "name": "student_id",
+                        "in": "query",
+                        "description": "學生id",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "course_id",
+                        "in": "query",
+                        "description": "課程id",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "exam_id",
+                        "in": "query",
+                        "description": "考試id",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "exam_score",
+                        "in": "query",
+                        "description": "考試成績",
+                        "required": false,
                         "schema": {
                             "type": "integer"
                         }

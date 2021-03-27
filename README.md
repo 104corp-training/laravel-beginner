@@ -14,22 +14,13 @@
 ```
 /api/documentation
 ```
--   所有課程的API
-```
-/api/courses
-```
--   課程的詳細資料的API
-```
-/api/course/{id}
-```
-
 
 ## 頁面資料
 -   所有課程的頁面資料
 ```
 /courses
 ```
--   課程的詳細資料
+-   課程的詳細資料和學生考試成績
 ```
-/course/{id}
+/courses/{courseId}
 ```

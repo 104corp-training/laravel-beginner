@@ -39,10 +39,9 @@ class AppServiceProvider extends ServiceProvider
             $queryString = sprintf(preg_replace('/\?/', '%s', $sql), ...$bindings);
             $connectionName = $query->connectionName;
 
-            Log::channel('sql-tuning')->info($connectionName);
-            Log::channel('sql-tuning')->info($sql);
+//            Log::channel('sql-tuning')->info($connectionName);
+//            Log::channel('sql-tuning')->info($sql);
             Log::channel('sql-tuning')->info($queryString);
         });
-
     }
 }

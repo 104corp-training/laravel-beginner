@@ -2,7 +2,6 @@
 
 use App\Exceptions\APIException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,14 +23,12 @@ Route::get('/profile/info', function () {
     return ['time' => Carbon\Carbon::now()];
 });
 
-Route::get('/courses', function () {
-    $users = DB::table('Course')->get();
-    return $users;
-});
-
-Route::get('/courses/{id}', function($id){
-    $users = DB::table('Course')->where('id',$id)->get();
-    return $users;
+Route::prefix('courses')->group(function () {
+    Route::get('/', 'CourseController@apiIndex');
+    Route::post('/', 'CourseController@store');
+    Route::get('/{courseId}', 'CourseController@show');
+    Route::put('/{courseId}', 'CourseController@update');
+    Route::delete('/{courseId}', 'CourseController@destroy');
 });
 
 Route::prefix('exams')->group(function () {
