@@ -26,6 +26,19 @@ jquery.min.js"></script>
             <div class="card-body">
                 <p>Description: {{$courseDescription}}</p>
                 <p>Study Experience: {{$courseExperience}}</p>
+                <?php 
+                $output1 = '<p>Who took this: </p>';
+                if(is_string($courseMember)) {
+                    $output1 = '<p>Who took this: ';
+                    $output1 .= $courseMember . '</p>';
+                    echo $output1;
+                } else {
+                    foreach($courseMember as $a) {
+                        $output1 .= $a['first_name']. ' ' . $a['last_name'] . '<br/>';
+                    }
+                    echo $output1;
+                }
+                ?>
             </div>
             <ul class="list-group">
                 <?php

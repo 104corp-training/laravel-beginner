@@ -21,6 +21,7 @@ class Student extends Model
     protected $fillable = [
         'first_name',
         'last_name',
+        'course_id',
         'register_at',
     ];
 
@@ -67,9 +68,9 @@ class Student extends Model
     {
         return $this->belongsToMany(
             Course::class,
-            'student_course',
-            'student_id',
-            'course_id'
+            // 'student_course',
+            // 'student_id',
+            // 'course_id'
         );
     }
 }

@@ -19,6 +19,7 @@ class StudentSeeder extends Seeder
                 'id' => $i,
                 'first_name' => $faker->firstName,
                 'last_name' => $faker->lastName,
+                'course_id' => $faker->randomDigitNot(0),
                 'register_at' => $fakerDatetime,
             ]);
         }
