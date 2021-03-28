@@ -82,7 +82,9 @@ class CommentController extends Controller
             throw new APIException('找不到對應評論', 404);
         }
         */
-        $commentResource = Comment::find($courseId);
+        if(! $commentResource = Comment::find($courseId)){
+            throw new APIException('評論找不到', 404);
+        }
         return $commentResource;
     }
 
@@ -126,7 +128,7 @@ class CommentController extends Controller
     public function destroy($courseId)
     {
         if (! $comment = Comment::find($courseId)) {
-            throw new APIException('課程找不到', 404);
+            throw new APIException('評論找不到', 404);
         }
         $status = $comment->delete();
         return ['success' => $status];
