@@ -20,4 +20,11 @@ Route::get('/', function () {
 //});
 Route::get('/profile', 'ProfileController@index');
 
+Route::get('/profile/{coursePage}', 'CoursePageController@course');
+Route::get('/test123', 'CoursePageController@index');
+
+Route::get('/test', function(){
+    return App\Models\Teacher::all();
+});
+
 Route::get('/profile/cache', 'ProfileController@cache');

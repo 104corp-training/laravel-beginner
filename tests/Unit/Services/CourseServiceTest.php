@@ -75,4 +75,16 @@ class CourseServiceTest extends TestCase
         $service = new CourseService($mockRepo);
         $service->getCourseById($testCourseId);
     }
+
+    /*public function testGetProvixer()
+    {
+        return [
+            [
+                11;
+            ],
+            [
+                22;
+            ],
+        ]
+    }*/
 }

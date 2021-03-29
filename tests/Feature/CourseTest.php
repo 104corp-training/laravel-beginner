@@ -31,7 +31,7 @@ class CourseTest extends TestCase
         $response = $this->postJson('/user', ['name' => 'Sally']);
         $this->json('POST', '/user', ['name' => 'Sally']);
 
-         Course::create([
+        Course::create([
             'id' => '999',
             'name' => '測試課程',
             'description' => 'test',
@@ -50,14 +50,43 @@ class CourseTest extends TestCase
                 "metadata" => Carbon::now(),
             ]);
     }
-
+    
     public function testFailed()
     {
-        $response = $this->get('/api/courses/999');
+	    $response = $this->get('/api/courses/999');
 
-        $response->assertStatus(404)
-            ->assertExactJson([
-                "message" => "找不到對應課程",
-            ]);
+	    $response->assertStatus(404)
+		    ->assertExactJson([
+				    "message" => "找不到對應課程",
+		    ]);
     }
+    <<<<<<< HEAD
+=======
+    
+    /*public function testCreateSuccess()
+    {
+        $response = $this->json(
+            method: 'POST',
+            unit: '/api/courses',
+            [
+                'name' => 'Sally',
+                'description' => 'test',
+                'outline' => 'outline',
+            ]
+            );
+        $response->assertStatus( status:200)
+            ->assertExactJson([
+                'success' => [
+                    'name' => 'Sally',
+                    'description' => 'test',
+                    'outline' => 'outline',
+                    'update_at' => "2021-03-23 14:00:00",
+                    "create_at" => "2021-03-23 14:00:00",
+                    "id" => 1,
+                ],
+            ]);
+
+        
+    }*/
+>>>>>>> c746220 (init)
 }

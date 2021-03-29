@@ -35,7 +35,7 @@ class Student extends Model
     {
         return "{$this->first_name} {$this->last_name}";
     }
-
+    
     /**
      * Set the user's first name.
      *
@@ -54,7 +54,7 @@ class Student extends Model
             'student_id'
         );
     }
-
+    
     public function profiles()
     {
         return $this->hasMany(

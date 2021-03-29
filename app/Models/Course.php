@@ -43,4 +43,25 @@ class Course extends Model
             'student_id'
         );
     }
+
+    /*public function teacher()
+    {
+        return $this->belongsTo(
+            Teacher::class,
+            'outline'
+        );
+    }*/
+
+    /*public function teacher()
+    {
+        return $this->belongsTo('App\Models\Teacher', 'outline');
+    }*/
+
+    public function teacher()
+    {
+        return $this->belongsTo(
+            Teacher::class,
+            'id',
+        );
+    }
 }
