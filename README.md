@@ -8,5 +8,19 @@
 
 - Docker
 - Docker Compose
+ 
+## 專案用途
 
+- 能夠了解laravel的mvc架構以及laravel對於資料庫的運用
 
+## 環境
+
+- macOS
+
+## 如何建置
+
+- 利用docker與laravel做結合
+
+## 如何測試
+
+- 有做feature test
