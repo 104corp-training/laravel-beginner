@@ -324,7 +324,7 @@
 /**
 * @OA\Delete(
 *      path="/api/comments/{id}",
-*      operationId="CommentDelete",
+*      operationId="CommentsDelete",
 *      tags={"Comments"},
 *      summary="刪除評論",
 *      description="刪除評論",
