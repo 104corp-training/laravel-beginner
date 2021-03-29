@@ -200,6 +200,35 @@
                 }
             }
         },
+        "/api/course/{id}": {
+            "get": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "取得單一課程名稱",
+                "description": "取得單一課程名稱",
+                "operationId": "CourseTestApi",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Course id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功"
+                    },
+                    "500": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
         "/api/comments": {
             "get": {
                 "tags": [
@@ -226,7 +255,7 @@
                         "name": "edit_id",
                         "in": "query",
                         "description": "學生id",
-                        "required": true,
+                        "required": false,
                         "schema": {
                             "type": "integer"
                         }
@@ -348,7 +377,7 @@
                 ],
                 "summary": "刪除評論",
                 "description": "刪除評論",
-                "operationId": "CommentDelete",
+                "operationId": "CommentsDelete",
                 "parameters": [
                     {
                         "name": "id",

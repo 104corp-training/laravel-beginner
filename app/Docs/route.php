@@ -175,6 +175,34 @@
 * Delete course content
 */
 
+/**
+* @OA\Get(
+*      path="/api/course/{id}",
+*      operationId="CourseTestApi",
+*      tags={"Courses"},
+*      summary="取得單一課程名稱",
+*      description="取得單一課程名稱",
+*      @OA\Parameter(
+*           name = "id",
+*           description = "Course id",
+*           required = true,
+*           in = "path",
+*           @OA\Schema(
+*               type = "integer"
+*           )
+*      ),
+*      @OA\Response(
+*          response=200,
+*          description="請求成功"
+*      ),
+*      @OA\Response(
+*          response=500,
+*          description="error"
+*      )
+* )
+* Returns a Course name
+*/
+
 
 
 /**
@@ -189,7 +217,7 @@
 *          description="請求成功"
 *       )
 * )
-* Returns list of Courses
+* Returns list of Comments
 */
 
 /**
