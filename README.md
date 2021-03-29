@@ -24,3 +24,7 @@
 ## 如何測試
 
 - 有做feature test
+
+## API文件
+
+- 透過L5-swagger   /api/documentation
