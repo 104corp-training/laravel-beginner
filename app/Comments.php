@@ -43,7 +43,9 @@ class Comments extends Model
             case 'delete':
                 $target_page = 'delete_comment';
 
-                $resourse = null;
+                $resourse = [
+                    'comments' => self::all(),
+                ];;
                 break;
 
             default:
@@ -91,6 +93,17 @@ class Comments extends Model
         ]);
 
         echo "<script language='javascript'> alert('更改評論成功') </script>";
+
+        return self::returnIndex();
+    }
+
+    static public function deleteComment(Request $request)
+    {
+        $target_id = $_POST['select_id'];
+
+        self::where('id', $target_id)->delete();
+
+        echo "<script language='javascript'> alert('刪除評論成功') </script>";
 
         return self::returnIndex();
     }

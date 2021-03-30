@@ -43,6 +43,9 @@ class Controller extends BaseController
             case 'update_comment':
                 return Comments::updateComment($request);
                 break;
+            case 'delete_comment':
+                return Comments::deleteComment($request);
+                break;
             default:
                 return;
                 break;
@@ -60,6 +63,9 @@ class Controller extends BaseController
                 break;
             case 'updateComment':
                 return Comments::mainPage('update');
+                break;
+            case 'deleteComment':
+                return Comments::mainPage('delete');
                 break;
             default:
                 return;
