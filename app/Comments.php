@@ -12,15 +12,47 @@ class Comments extends Model
 {
     protected $table = 'comment';
 
-    static public function mainPage()
+    static public function mainPage($order = null)
     {
-        $courses_array = Course::getAllCourseName();
-        $students_array = Student::getAllFullName();
+        switch ($order) {
+            case 'create':
+                $target_page = 'new_comment';
 
-        return view('new_comment',[
-            'courses' => $courses_array,
-            'students' => $students_array,
-        ]);
+                $resourse = [
+                    'courses' => Course::getAllCourseName(),
+                    'students' => Student::getAllFullName(),
+                ];
+                break;
+
+            case 'update':
+                $target_page = 'update_comment';
+
+                $resourse = [
+                    'comments' => self::all(),
+                    'courses' => Course::getAllCourseName(),
+                    'students' => Student::getAllFullName(),
+                ];
+                break;
+
+            case 'read':
+                $target_page = 'read_comment';
+
+                $resourse = null;
+                break;
+
+            case 'delete':
+                $target_page = 'delete_comment';
+
+                $resourse = null;
+                break;
+
+            default:
+                echo "Error: Invalid Comments Order";
+                return;
+                break;
+        }
+
+        return view($target_page, $resourse);
     }
 
     static public function appendComment(Request $request)
@@ -40,8 +72,27 @@ class Comments extends Model
 
         echo "<script language='javascript'> alert('增加評論成功') </script>";
 
-        $body = new WelcomeController;
-        return $body->index();
+        return self::returnIndex();
+    }
+
+    static public function updateComment(Request $request)
+    {
+        $target_id = $_POST['select_id'];
+        $student = $_POST['select_student'];
+        $course = $_POST['select_course'];
+        $score = $_POST['select_score'];
+        $comment = $_POST['comment_content'];
+
+        self::where('id', $target_id)->update([
+            'student_id' => $student,
+            'course_id' => $course,
+            'score' => $score,
+            'comment' => $comment
+        ]);
+
+        echo "<script language='javascript'> alert('更改評論成功') </script>";
+
+        return self::returnIndex();
     }
 
     public function student()
@@ -60,5 +111,11 @@ class Comments extends Model
             'course_id',
             'id'
         );
+    }
+
+    static public function returnIndex()
+    {
+        $body = new WelcomeController;
+        return $body->index();
     }
 }

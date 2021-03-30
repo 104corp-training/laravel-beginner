@@ -40,6 +40,9 @@ class Controller extends BaseController
             case 'new_course':
                 return CourseStudent::appendCourse($request);
                 break;
+            case 'update_comment':
+                return Comments::updateComment($request);
+                break;
             default:
                 return;
                 break;
@@ -53,7 +56,10 @@ class Controller extends BaseController
                 return NewCourseController::mainPage();
                 break;
             case 'newComment':
-                return Comments::mainPage();
+                return Comments::mainPage('create');
+                break;
+            case 'updateComment':
+                return Comments::mainPage('update');
                 break;
             default:
                 return;
