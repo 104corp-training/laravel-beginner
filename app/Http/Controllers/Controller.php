@@ -14,15 +14,15 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function getRequest($operation, $sub_operation)
+    public function getRequest($resource, $action)
     {
-        switch ($operation) {
-            case 'operation':
-                return OperationController::show($sub_operation);
+        switch ($resource) {
+            case 'pages':
+                return OperationController::show($action);
                 break;
 
-            case 'submit':
-                return $this->submitRequest($sub_operation);
+            case 'upload':
+                return $this->submitRequest($action);
                 break;
 
             default:

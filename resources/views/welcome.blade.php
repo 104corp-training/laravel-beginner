@@ -137,19 +137,19 @@
                 </div>
 
                 <div class="second-title">
-                    <a href="/submit/newCourse" class="white-w"> 選課連結 </a>
+                    <a href="/upload/newCourse" class="white-w"> 選課連結 </a>
                 </div>
 
                 <div class="second-title">
-                    <a href="/submit/newComment" class="white-w"> 評論連結 </a>
+                    <a href="/upload/newComment" class="white-w"> 評論連結 </a>
                 </div>
 
                 <div class="second-title">
-                    <a href="/submit/updateComment" class="white-w"> 更改評論 </a>
+                    <a href="/upload/updateComment" class="white-w"> 更改評論 </a>
                 </div>
 
                 <div class="second-title">
-                    <a href="/submit/deleteComment" class="white-w"> 刪除評論 </a>
+                    <a href="/upload/deleteComment" class="white-w"> 刪除評論 </a>
                 </div>
             </div>
         </div>
