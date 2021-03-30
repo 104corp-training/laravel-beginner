@@ -11,9 +11,15 @@
 
 ## API文件
 
-http://localhost:{PORT}/api/documentation
-http://localhost:{PORT}/docs/api-docs.json
+-http://localhost:{PORT}/api/documentation
+
+-http://localhost:{PORT}/docs/api-docs.json
 
 ##課程連結
 
 http://localhost:{PORT}/course
+
+##已知問題
+
+table:course_study無法靠seeder填入值
+

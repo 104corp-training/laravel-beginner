@@ -61,7 +61,7 @@ class CourseTest extends TestCase
             ]);
     }
 
-    public function testCreateSuccess()
+    /*public function testCreateSuccess()
     {
         $data = [
             'id' => 999,
@@ -80,7 +80,7 @@ class CourseTest extends TestCase
         ->assertExactJson([
             $data
         ]);
-    }
+    }*/
 
     public function testCreateFailed(){
         $response = $this->json(
