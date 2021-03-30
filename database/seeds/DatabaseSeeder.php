@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\CourseStudy;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ProfileSeeder::class);
         $this->call(CourseSeeder::class);
         $this->call(StudentSeeder::class);
-        //$this->call(CourseStudy::class);
+        $this->call(CourseStudySeeder::class);
     }
 }

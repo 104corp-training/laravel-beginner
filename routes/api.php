@@ -14,14 +14,14 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware([])->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/profile/info', function () {
     return ['time' => Carbon\Carbon::now()];
 });
 
-Route::middleware(['apiToken'])->prefix('courses')->group(function () {
+Route::middleware([])->prefix('courses')->group(function () {
     Route::get('/', 'CourseController@index');
     Route::post('/', 'CourseController@store');
     Route::get('/{courseId}', 'CourseController@show');
