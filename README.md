@@ -1,14 +1,5 @@
 # Laravel beginner
 
-## 運行環境需求
-
-參照官方文件 [Laravel 6 requirements](https://laravel.com/docs/6.x#server-requirements) 可達最低運行需求。
-
-## 必要工具
-
-- Docker
-- Docker Compose
-
 # 第一次作業
  
 ## 專案用途
@@ -46,6 +37,8 @@
 - /course/{id}
 ## 資料庫架構   
 - course與student多對多 中介表comment
+## 可以從model取得
+- app/Http/Controllers/CourseController.php
 
 # 第三次作業
 
