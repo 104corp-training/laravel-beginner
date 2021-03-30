@@ -8,6 +8,8 @@
 
 - Docker
 - Docker Compose
+
+# 第一次作業
  
 ## 專案用途
 
@@ -37,3 +39,17 @@
 
 - /api/course 
 - 顯示課程名稱和編號
+
+# 第二次作業
+
+## 學習歷程 
+- /course/{id}
+## 資料庫架構   
+- course與student多對多 中介表comment
+
+# 第三次作業
+
+## 新增RESTful API 
+- app/Http/Controllers/CommentController.php
+## 補完test case
+- tests/Feature/CourseTest.php
