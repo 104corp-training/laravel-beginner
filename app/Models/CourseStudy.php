@@ -23,7 +23,7 @@ class CourseStudy extends Model
         'name',
         'point',
         'content',
-        'outline',
+        'outline'
     ];
 
     /**

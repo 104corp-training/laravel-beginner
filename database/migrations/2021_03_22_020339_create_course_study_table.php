@@ -15,10 +15,11 @@ class CreateCourseStudyTable extends Migration
     {
         Schema::create('course_study', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('student_id')->unsigned()->default(0);
+            $table->string('name', 100);
             $table->integer('course_id')->unsigned()->default(0);
             $table->integer('point')->unsigned()->default(0);
             $table->string('content');
+            $table->text('outline');
             $table->timestamps();
         });
     }

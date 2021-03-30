@@ -21,5 +21,5 @@ http://localhost:{PORT}/course
 
 ##已知問題
 
-table:course_study無法靠seeder填入值
+feature test:CourseTest.php testCreateSuccess()測試錯誤
 

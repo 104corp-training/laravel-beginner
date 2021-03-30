@@ -111,7 +111,7 @@ class CourseTest extends TestCase
 
         $response->assertStatus(200)
             ->assertExactJson([
-                "success" => true
+                "message" => true
             ]);
     }
     
@@ -140,7 +140,7 @@ class CourseTest extends TestCase
 
         $response->assertStatus(200)
         ->assertExactJson([
-            "success" => true
+            "message" => true
         ]);
     }
 
