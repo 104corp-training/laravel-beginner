@@ -28,3 +28,12 @@
 ## API文件
 
 - 透過L5-swagger   /api/documentation
+
+## 所有課程資料頁面
+
+/course
+
+## 所有課程api
+
+/api/course
+顯示課程名稱和編號
