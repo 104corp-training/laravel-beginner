@@ -17,14 +17,19 @@ use Illuminate\Http\Request;
 Route::middleware([])->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/profile/info', function () {
-    return ['time' => Carbon\Carbon::now()];
-});
 
-Route::middleware([])->prefix('courses')->group(function () {
+Route::middleware([])->prefix('course')->group(function () {
     Route::get('/', 'CourseController@index');
     Route::post('/', 'CourseController@store');
     Route::get('/{courseId}', 'CourseController@show');
     Route::put('/{courseId}', 'CourseController@update');
     Route::delete('/{courseId}', 'CourseController@destroy');
+});
+
+Route::middleware([])->prefix('coursestudy')->group(function () {
+    Route::get('/', 'courseStudyController@index');
+    Route::post('/', 'courseStudyController@store');
+    Route::get('/{courseStudyid}', 'courseStudyController@show');
+    Route::put('/{courseStudyId}', 'courseStudyController@update');
+    Route::delete('/{courseStudyId}', 'courseStudyController@destroy');
 });
