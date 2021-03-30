@@ -22,6 +22,10 @@ class CourseService
         $this->repo = $repo;
     }
 
+
+    // set & get
+    // public function setCourseRepository(CourseRepository $repo)
+
     /**
      * @param int $id
      * @return CourseResource

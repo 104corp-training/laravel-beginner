@@ -8,13 +8,12 @@ use App\Services\CourseService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-// up for api
-// down for web
-use App\Models\Comment;
-use DB;
+use App\Models\Comment; 
 
-class CourseController extends Controller
+class CommentController extends Controller
 {
+    // do crud from api
+
     /**
      * @var CourseService
      */
@@ -32,7 +31,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return Course::all()->toArray();
+        return Comment::all()->toArray();
     }
 
     /**
@@ -43,6 +42,10 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+        /*
+            comment_table單純只有儲存評論
+            應該不需要驗證
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:20',
         ]);
@@ -51,13 +54,14 @@ class CourseController extends Controller
             //$messages = $validator->errors()->getMessages();
             throw new APIException('驗證錯誤' , 422);
         }
+        */
 
         $courseForm = [
-            'name' => $request->get('name'),
-            'description' => trim($request->get('description')) ?? '',
-            'outline' => $request->get('outline') ?? '',
+            'edit_id' => $request->get('edit_id'),
+            'comment_id' => $request->get('comment_id'),
+            'text' => $request->get('text') ?? '',
         ];
-        $status = Course::create($courseForm);
+        $status = Comment::create($courseForm);
 
         return ['success' => $status];
     }
@@ -71,12 +75,17 @@ class CourseController extends Controller
      */
     public function show($courseId)
     {
+        /*
         try {
             $courseResource = $this->service->getCourseById($courseId);
         } catch (Exception $e) {
-            throw new APIException('找不到對應課程', 404);
+            throw new APIException('找不到對應評論', 404);
         }
-        return $courseResource;
+        */
+        if(! $commentResource = Comment::find($courseId)){
+            throw new APIException('評論找不到', 404);
+        }
+        return $commentResource;
     }
 
     /**
@@ -90,6 +99,10 @@ class CourseController extends Controller
         Request $request,
         $courseId
     ) {
+
+        /*
+        目前暫時用不到驗證
+
         try {
             $request->validate([
                 'name' => 'required|string|max:20',
@@ -97,11 +110,12 @@ class CourseController extends Controller
         } catch (\Exception $e) {
             throw new APIException($e->getMessage() , 422);
         }
+        */
 
-        if (! $course = Course::find($courseId)) {
-            throw new APIException('課程找不到', 404);
+        if (! $comment = Comment::find($courseId)) {
+            throw new APIException('評論找不到', 404);
         }
-        $status = $course->update($request->toArray());
+        $status = $comment->update($request->toArray());
         return ['success' => $status];
     }
 
@@ -113,49 +127,11 @@ class CourseController extends Controller
      */
     public function destroy($courseId)
     {
-        if (! $course = Course::find($courseId)) {
-            throw new APIException('課程找不到', 404);
+        if (! $comment = Comment::find($courseId)) {
+            throw new APIException('評論找不到', 404);
         }
-        $status = $course->delete();
+        $status = $comment->delete();
         return ['success' => $status];
     }
-
-    /**
-     * 
-     * show all the courses from web.php request to course.blade.php
-     * 
-     */
-
-     public function web_index()
-     {
-        $courses = DB::table('course')->get();
-
-        return view( 'course' )->with( 'courses', $courses ) ;
-     }
-
-
-    /**
-     * 
-     * show more information to web
-     * 
-     */
-
-
-     public function web_show($id)
-     {
-
-        $contents = Course::where( 'id','=',strval($id) )->get();
-
-        $comments = Course::find($id)->comment()->get();
-        
-        /*
-        $comments = Comment::
-        where( 'comment_id', '=', strval($id) )
-        ->join( 'Student', 'edit_id', '=', 'Student.id')
-        ->get();
-        */
-
-        return view( 'content' )->with( ['contents' => $contents, 'comments' => $comments ]);
-     }
 
 }

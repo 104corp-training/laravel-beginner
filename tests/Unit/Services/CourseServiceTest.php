@@ -58,7 +58,7 @@ class CourseServiceTest extends TestCase
 
     /**
      * @testdox 測試取得不到資料
-     *
+     *  
      */
     public function testGetByEmpty()
     {
@@ -74,5 +74,49 @@ class CourseServiceTest extends TestCase
 
         $service = new CourseService($mockRepo);
         $service->getCourseById($testCourseId);
+    }
+
+    /**
+     * @testdox 測試刪除不存在的資料
+     * 
+     * 
+     */
+
+    /*
+    public function testDeleteCourseById()
+    {
+        $testCourseId = 1;
+        $expected = [
+            'name' => '',
+            'description' => '',
+            'outline' => '',
+            'students' => [],
+        ];
+    }
+    */
+
+    /**
+      * @testdox 測試post
+      */
+
+
+    /**
+     * 
+     * @testdox 測試put
+     * 
+     */
+    
+
+    public function testPutCourseById()
+    {
+        $testCourseId = 1 ;
+        $expected = [
+            'name' => 'PHP 基礎設計pro',
+            'description' => 'hello',
+            'outline' => 'whoami',
+            'students' => [],
+        ];
+
+        
     }
 }
