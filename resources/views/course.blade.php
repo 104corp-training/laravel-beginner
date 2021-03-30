@@ -16,7 +16,7 @@
 <body>
     <div class="container">
         <div class="card">
-            <h5 class="card-header">Class</h5>
+            <h5 class="card-header">Course</h5>
             <div class="card-body">
                 @if (count($records))
                 <ul class="list-group"> 
@@ -27,7 +27,7 @@
                     {{ $record->id }}
                     @endslot
                     
-                    <a href=/class/{{ $record->id}}>{{ $record->name }}</a>
+                    <a href=/course/{{ $record->id}}>{{ $record->name }}</a>
                     @endcomponent
                     @endforeach
                 

@@ -19,6 +19,7 @@ class Course extends Model
      * @var array
      */
     protected $fillable = [
+        'id',
         'name',
         'description',
         'outline',
@@ -45,7 +46,9 @@ class Course extends Model
     public function courseStudy()
     {
         return $this->hasOne(
-            'App\Models\CourseStudy'
+            CourseStudy::class,
+            'id'
+            //'App\Models\CourseStudy'
         );
     }
 }

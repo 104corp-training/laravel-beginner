@@ -14,6 +14,6 @@ use app\Models\Course;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/class/{id}', 'pagesController@index');
-Route::get('/class', 'classController@index');
-Route::get('/class/cache', 'classController@cache');
+Route::get('/course/{id}', 'PagesController@index');
+Route::get('/course', 'CourseController@index');
+Route::get('/course/cache', 'CourseController@cache');

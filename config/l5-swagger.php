@@ -55,7 +55,7 @@ return [
         | Absolute path to location where parsed swagger annotations will be stored
         |--------------------------------------------------------------------------
         */
-        
+
         'docs' => storage_path('api-docs'),
 
         /*
@@ -188,7 +188,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'swagger_version' => env('SWAGGER_VERSION', '2.0'),
+    'swagger_version' => env('SWAGGER_VERSION', '3.0'),
 
     /*
     |--------------------------------------------------------------------------

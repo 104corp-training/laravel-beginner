@@ -18,9 +18,8 @@ class pagesController extends Controller
      */
     public function index($id)
     {
-        /*$pages = DB::table('course')->where('id', $id)->first()
-            ->join(find($id)->courseStudy);*/
         $pages = Course::find($id)->courseStudy;
+        //$pages = DB::table('course_study')->find($id);
         return view(
             'pages',
             compact('pages')

@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Course;
+use App\Models\CourseStudy;
 use Illuminate\Database\Seeder;
 
-class CoursePointSeeder extends Seeder
+class CourseStudySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +15,9 @@ class CoursePointSeeder extends Seeder
         $faker = Faker\Factory::create();
         $fixture = $this->getTestFixture();
         foreach ($fixture as $courseName) {
-            Course::create([
+            CourseStudy::create([
                 'name' => $courseName,
+                'point' => $faker->numberBetween($min = 0, $max = 100),
                 'content' => $faker->text,
                 'outline' => $faker->text,
             ]);

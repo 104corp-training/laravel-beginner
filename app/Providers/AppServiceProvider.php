@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register(\L5Swagger\L5SwaggerServiceProvider::class);
+        //
     }
 
     /**
@@ -39,8 +39,8 @@ class AppServiceProvider extends ServiceProvider
             $queryString = sprintf(preg_replace('/\?/', '%s', $sql), ...$bindings);
             $connectionName = $query->connectionName;
 
-            Log::channel('sql-tuning')->info($connectionName);
-            Log::channel('sql-tuning')->info($sql);
+//            Log::channel('sql-tuning')->info($connectionName);
+//            Log::channel('sql-tuning')->info($sql);
             Log::channel('sql-tuning')->info($queryString);
         });
     }

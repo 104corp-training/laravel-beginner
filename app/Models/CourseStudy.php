@@ -19,7 +19,8 @@ class CourseStudy extends Model
      * @var array
      */
     protected $fillable = [
-        'points',
+        'name',
+        'point',
         'content',
         'outline',
     ];

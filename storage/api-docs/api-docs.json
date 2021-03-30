@@ -1,10 +1,10 @@
 {
-    "swagger": "2.0",
+    "openapi": "3.0.0",
     "info": {
         "title": "L5 OpenApi",
         "description": "L5 Swagger OpenApi description",
         "contact": {
-            "email": "aaron@104.com.tw"
+            "email": "aaron.lin@104.com.tw"
         },
         "license": {
             "name": "Apache 2.0",
@@ -13,21 +13,128 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/api/class": {
+        "/api/courses/{id}": {
             "get": {
                 "tags": [
-                    "Class Tag"
+                    "course"
                 ],
-                "summary": "\u8ab2\u7a0b\u5167\u5bb9 Summary",
-                "description": "\u8ab2\u7a0b\u5167\u5bb9 Description",
-                "operationId": "class",
+                "summary": "取得課程資料",
+                "description": "取得課程資料",
+                "operationId": "courseShow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "course id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "\u8acb\u6c42\u6210\u529f"
+                        "description": "請求成功"
+                    },
+                    "404": {
+                        "description": "找不到對應課程"
+                    }
+                }
+            }
+        },
+        "/api/": {
+            "post": {
+                "tags": [
+                    "course"
+                ],
+                "summary": "新增課程",
+                "description": "新增課程",
+                "operationId": "courseStore",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "課程名稱",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "課程成功建立"
+                    },
+                    "422": {
+                        "description": "驗證錯誤"
+                    }
+                }
+            }
+        },
+        "/api/{coursesid}": {
+            "put": {
+                "tags": [
+                    "course"
+                ],
+                "summary": "更新課程",
+                "description": "更新課程",
+                "operationId": "courseUpdate",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "course id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "課程名稱",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功"
+                    },
+                    "404": {
+                        "description": "課程找不到"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "course"
+                ],
+                "summary": "刪除課程",
+                "description": "刪除課程",
+                "operationId": "courseDelete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "course id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功"
+                    },
+                    "404": {
+                        "description": "課程找不到"
                     }
                 }
             }
         }
-    },
-    "definitions": {}
+    }
 }
