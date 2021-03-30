@@ -43,4 +43,22 @@ class Comments extends Model
         $body = new WelcomeController;
         return $body->index();
     }
+
+    public function student()
+    {
+        return $this->belongsTo(
+            Student::class,
+            'student_id',
+            'id'
+        );
+    }
+
+    public function course()
+    {
+        return $this->belongsTo(
+            Course::class,
+            'course_id',
+            'id'
+        );
+    }
 }

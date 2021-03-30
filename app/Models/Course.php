@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Comments;
 use App\CourseStudent;
 use Illuminate\Database\Eloquent\Model;
 
@@ -60,6 +61,14 @@ class Course extends Model
     {
         return $this->hasMany(
             CourseStudent::class,
+            'course_id'
+        );
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(
+            Comments::class,
             'course_id'
         );
     }

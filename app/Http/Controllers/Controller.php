@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comments;
+use App\CourseStudent;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -37,7 +38,7 @@ class Controller extends BaseController
                 return Comments::appendComment($request);
                 break;
             case 'new_course':
-                return NewCourseController::submit($request);
+                return CourseStudent::appendCourse($request);
                 break;
             default:
                 return;

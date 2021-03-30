@@ -87,6 +87,10 @@
                 text-transform: uppercase;
                 line-height: 50px;
             }
+ 
+            .in-line {
+                display: inline-block;
+            }
 
             table, th, td {
                 border: 1px solid black;
@@ -106,19 +110,21 @@
                 </div>
 
                 <div>
-                    <div class="subtitle">
+                    <div class="subtitle in-line">
                         <?php echo "課程描述"; ?>
                     </div>
 
-                    <div class="classic-font m-b-md link-area-limit">
+                    <div class="classic-font m-b-md link-area-limit in-line">
                         <?php echo $description; ?>
                     </div>
+                </div>
 
-                    <div class="subtitle">
+                <div>
+                    <div class="subtitle in-line">
                         <?php echo "課程大綱"; ?>
                     </div>
 
-                    <div class="classic-font m-b-md link-area-limit">
+                    <div class="classic-font m-b-md link-area-limit in-line">
                         <?php 
                             echo $outline; 
                         ?>
@@ -126,32 +132,60 @@
                 <div>  
 
                 <div>
-                    <div class="subtitle">
-                        <?php echo "修課人員" ?>
-                    </div> 
-                    <div class="m-b-md link-area-limit flex-center small-limit'">
-                        <?php
-                            if( $searchResult != false ) {
-                                echo "<table>";
-                                echo "<tr>
-                                    <th> First Name </th>
-                                    <th> Last Name </th>
-                                    <th> 修課時間 </th>
-                                </tr>";
-                                foreach ($searchResult as $student) {
-                                    echo "<tr class='classic-font'>";
+                    <div class="in-line">
+                        <div class="subtitle"> 修課人員 </div> 
+                        <div class="m-b-md link-area-limit flex-center small-limit'">
+                            <?php
 
-                                    echo "<td> $student->student_fname </td>";
-                                    echo "<td> $student->student_lname </td>";
-                                    echo "<td> $student->created_at </td>";
-                                    
-                                    echo "</tr>";
+                                if( $searchResult != false ) {
+                                    echo "<table>";
+                                    echo "<tr>
+                                        <th> First Name </th>
+                                        <th> Last Name </th>
+                                        <th> 修課時間 </th></tr>";
+                                    foreach ($searchResult as $student) {
+                                        echo "<tr class='classic-font'>";
+
+                                        echo "<td> $student->student_fname </td>";
+                                        echo "<td> $student->student_lname </td>";
+                                        echo "<td> $student->created_at </td>";
+                                        
+                                        echo "</tr>";
+                                    }
+                                    echo "</table>";
+                                } else {
+                                    echo "尚未有學生修習此課";
                                 }
-                                echo "</table>";
-                            } else {
-                                echo "尚未有學生修習此課";
-                            }
-                        ?>
+                            ?>
+                        </div>
+                    </div>
+
+                    <div class="in-line">
+                        <div class="subtitle"> 課程評論 </div>
+                        <div>
+                            <?php
+                                if ($comments != false) {
+                                    echo "<table>";
+                                    echo "<tr>
+                                        <th> 發布者 </th>
+                                        <th> 評分 </th>
+                                        <th> 評論 </th></tr>";
+                                    foreach ($comments as $comment) {
+                                        $name = $comment->student->getFullNameAttribute();
+                                        $score = $comment->score;
+                                        $content = $comment->comment;
+                                        echo "<tr>";
+                                        echo "<td> $name </td>";
+                                        echo "<td> $score </td>";
+                                        echo "<td> $content </td>";
+                                        echo "</tr>";
+                                    }
+                                    echo "</table>";
+                                } else {
+                                    echo "暫無評論";
+                                }
+                            ?>
+                        </div>
                     </div>
                 </div>
 
