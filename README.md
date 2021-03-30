@@ -26,9 +26,9 @@
 
 - /course
 
-## 所有課程api
+## 所有課程有對應的api
 
-- /api/course 
+- /api/course/{id}
 - 顯示課程名稱和編號
 
 # 第二次作業
