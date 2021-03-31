@@ -9,5 +9,6 @@
 - Docker
 - Docker Compose
 
-- Test for Commit
+## API 文件
 
+- 位址：/storage/api-docs/api-docs.json
