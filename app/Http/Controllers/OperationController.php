@@ -21,6 +21,11 @@ class OperationController extends Controller
         $ret = [];
         
         $course = Course::find($courseId);
+
+        if (!$course) {
+            abort(404);
+        }
+
         $searchResult = $course->attendStudents;
 
         $isSearchNotEmpty = !(count($searchResult) == 0);
@@ -40,7 +45,7 @@ class OperationController extends Controller
 
             return view('operation_valid', $ret);
         } else {
-            return view('operation_pot');
+            abort(404);
         }
     }
 }

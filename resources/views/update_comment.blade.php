@@ -14,7 +14,7 @@
         </style>
     </head>
     <body>
-        <div><form action="/update_comment" method="post">
+        <div><form action="/comments/update" method="post">
             {{ csrf_field() }}
             <?php
                 $isCommentsValid = count($comments);

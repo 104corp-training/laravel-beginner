@@ -26,28 +26,52 @@ class Controller extends BaseController
                 break;
 
             default:
-                return;
+                abort(404);
                 break;
         }
     }
 
-    public function postRequest(Request $request, $target)
+    public function postRequest(Request $request, $resource, $target)
+    {
+        switch ($resource) {
+            case 'courses':
+                return $this->postRequestCource($request, $target);
+                break;
+            case 'comments':
+                return $this->postRequestComment($request, $target);
+                break;
+            default:
+                abort(404);
+                break;
+        }
+    }
+
+    public function postRequestCource($request, $target)
     {
         switch ($target) {
-            case 'new_comment':
-                return Comments::appendComment($request);
-                break;
-            case 'new_course':
+            case 'new':
                 return CourseStudent::appendCourse($request);
                 break;
-            case 'update_comment':
+            default:
+                abort(404);
+                break;
+        }
+    }
+
+    public function postRequestComment($request, $target)
+    {
+        switch ($target) {
+            case 'new':
+                return Comments::appendComment($request);
+                break;
+            case 'update':
                 return Comments::updateComment($request);
                 break;
-            case 'delete_comment':
+            case 'delete':
                 return Comments::deleteComment($request);
                 break;
             default:
-                return;
+                abort(404);
                 break;
         }
     }
@@ -68,7 +92,7 @@ class Controller extends BaseController
                 return Comments::mainPage('delete');
                 break;
             default:
-                return;
+                abort(404);
                 break;
         }
     }

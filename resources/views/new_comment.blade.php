@@ -14,7 +14,7 @@
         </style>
     </head>
     <body>
-        <div><form action="/new_comment" method="post">
+        <div><form action="/comments/new" method="post">
             {{ csrf_field() }}
             <?php
                 $isStudentsValid = count($students);

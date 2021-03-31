@@ -20,7 +20,7 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('/{resources}/{target}', 'Controller@getRequest');
 
-Route::post('/{target}', 'Controller@postRequest');
+Route::post('/{resources}/{target}', 'Controller@postRequest');
 
 //Route::post('/new_class/submit', 'NewCourseController@submit');
 

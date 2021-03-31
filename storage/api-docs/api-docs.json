@@ -4,7 +4,7 @@
         "title": "L5 OpenApi",
         "description": "L5 Swagger OpenApi description",
         "contact": {
-            "email": "developer@example.com"
+            "email": "qazs0205@gmail.com"
         },
         "license": {
             "name": "Apache 2.0",
@@ -13,14 +13,6 @@
         "version": "1.0.0"
     },
     "servers": [
-        {
-            "url": "https://api-host.dev.app",
-            "description": "測試區主機"
-        },
-        {
-            "url": "https://api-host.production.app",
-            "description": "正式區主機"
-        },
         {
             "url": "http://localhost",
             "description": "Localhost"
@@ -81,6 +73,104 @@
                     },
                     "404": {
                         "description": "資源不存在"
+                    }
+                }
+            }
+        },
+        "/web/courses/{action}": {
+            "post": {
+                "tags": [
+                    "newCourse"
+                ],
+                "summary": "新增課程選課",
+                "description": "新增課程選課",
+                "operationId": "action",
+                "parameters": [
+                    {
+                        "name": "course_id",
+                        "in": "query",
+                        "description": "選課之課程編號",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "student_id",
+                        "in": "query",
+                        "description": "選課之學生編號",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "資源成功建立"
+                    },
+                    "404": {
+                        "description": "請求格式錯誤"
+                    }
+                }
+            }
+        },
+        "/web/comments/{action}": {
+            "post": {
+                "tags": [
+                    "commment"
+                ],
+                "summary": "對於評論的操作",
+                "description": "新增、更改或刪除評論",
+                "operationId": "action",
+                "parameters": [
+                    {
+                        "name": "comment_id",
+                        "in": "query",
+                        "description": "評論對應編號",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "select_student",
+                        "in": "query",
+                        "description": "評論對應學生",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "select_course",
+                        "in": "query",
+                        "description": "評論對應課程",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "score",
+                        "in": "query",
+                        "description": "評論對應分數",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "comment",
+                        "in": "query",
+                        "description": "評論對應內容",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "資源成功建立"
+                    },
+                    "404": {
+                        "description": "請求格式錯誤"
                     }
                 }
             }
