@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
+
 class CourseController extends Controller
 {
     /**
@@ -38,6 +39,7 @@ class CourseController extends Controller
             
         );
         //return Course::all()->toArray();
+
     }
 
     /**

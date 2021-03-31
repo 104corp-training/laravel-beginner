@@ -28,8 +28,10 @@ class CourseTest extends TestCase
      */
     public function testSuccess()
     {
+
         //$response = $this->postJson('/user', ['name' => 'Sally']);
         //$this->json('POST', '/user', ['name' => 'Sally']);
+
 
          Course::create([
             'id' => '999',
@@ -162,4 +164,5 @@ class CourseTest extends TestCase
             "message" => "課程找不到"
         ]);
     }
+
 }
