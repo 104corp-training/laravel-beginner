@@ -9,4 +9,17 @@
 - Docker
 - Docker Compose
 
+## API文件
+
+-http://localhost:{PORT}/api/documentation
+
+-http://localhost:{PORT}/docs/api-docs.json
+
+##課程連結
+
+http://localhost:{PORT}/course
+
+##已知問題
+
+feature test:CourseTest.php testCreateSuccess()測試錯誤
 

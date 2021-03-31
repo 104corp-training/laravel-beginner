@@ -28,8 +28,10 @@ class CourseTest extends TestCase
      */
     public function testSuccess()
     {
-        $response = $this->postJson('/user', ['name' => 'Sally']);
-        $this->json('POST', '/user', ['name' => 'Sally']);
+
+        //$response = $this->postJson('/user', ['name' => 'Sally']);
+        //$this->json('POST', '/user', ['name' => 'Sally']);
+
 
          Course::create([
             'id' => '999',
@@ -37,7 +39,7 @@ class CourseTest extends TestCase
             'description' => 'test',
             'outline' => 'test',
         ]);
-        $response = $this->get('/api/courses/999');
+        $response = $this->get('/api/course/999');
 
         $response->assertStatus(200)
             ->assertExactJson([
@@ -53,11 +55,114 @@ class CourseTest extends TestCase
 
     public function testFailed()
     {
-        $response = $this->get('/api/courses/999');
+        $response = $this->get('/api/course/999');
 
         $response->assertStatus(404)
             ->assertExactJson([
                 "message" => "找不到對應課程",
             ]);
     }
+
+    /*public function testCreateSuccess()
+    {
+        $data = [
+            'id' => 999,
+            'name' => 'test',
+            'description' => 'test',
+            'outline' => 'test'
+
+        ];
+        $response = $this->json(
+            'POST',
+            '/api/course',
+            $data
+        );
+        
+        $response->assertStatus(200)
+        ->assertExactJson([
+            $data,
+            "metadata" => Carbon::now(),
+        ]);
+        
+    }*/
+
+    public function testCreateFailed(){
+        $response = $this->json(
+            'POST',
+            'api/course',
+            [
+                'test' => 'test',
+                'test1' => 'test',
+                'test2' => 'test'
+            ]);
+
+        $response->assertStatus(422)
+        ->assertExactJson([
+            "message" => "驗證錯誤"
+        ]);
+    }
+
+    public function testDeleteSuccess(){
+
+        Course::create([
+            'id' => '999',
+            'name' => 'test',
+            'description' => 'test',
+            'outline' => 'test',
+        ]);
+
+        $response = $this->delete( 'api/course/999' );
+
+        $response->assertStatus(200)
+            ->assertExactJson([
+                "success" => true
+            ]);
+    }
+    
+    public function testDeleteFailed(){
+
+
+        $response = $this->delete( 'api/course/999' );
+
+        $response->assertStatus(404)
+            ->assertExactJson([
+                "message" => "課程找不到"
+            ]);
+
+    }
+
+    public function testUpdateSuccess(){
+        $response = $this->json(
+            'PUT',
+            'api/course/13',
+            [
+                'id' => '13' ,
+                'name' => 'Search Engine',
+                'description' => 'test'
+            ]
+            );
+
+        $response->assertStatus(200)
+        ->assertExactJson([
+            "success" => true
+        ]);
+    }
+
+    public function testUpdateFailed(){
+        $response = $this->json(
+            'PUT',
+            'api/course/999',
+            [
+                'id' => '16' ,
+                'name' => 'Search Engine',
+                'outline' => 'test'
+            ]
+            );
+        
+        $response->assertStatus(404)
+        ->assertExactJson([
+            "message" => "課程找不到"
+        ]);
+    }
+
 }

@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Course extends Model
+class CourseStudy extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'course';
+    protected $table = 'course_study';
 
     /**
      * The attributes that are mass assignable.
@@ -21,8 +21,9 @@ class Course extends Model
     protected $fillable = [
         'id',
         'name',
-        'description',
-        'outline',
+        'point',
+        'content',
+        'outline'
     ];
 
     /**
@@ -34,21 +35,11 @@ class Course extends Model
         'outline' => '',
     ];
 
-    public function students()
+    public function course()
     {
-        return $this->belongsToMany(
-            Student::class,
-            'student_course',
-            'course_id',
-            'student_id'
-        );
-    }
-    public function courseStudy()
-    {
-        return $this->hasOne(
-            CourseStudy::class,
-            'id'
-            //'App\Models\CourseStudy'
+        return $this->belongsTo(
+            'App\Models\Course'
         );
     }
 }
+?>

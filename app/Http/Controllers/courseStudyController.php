@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Exceptions\APIException;
@@ -8,16 +7,10 @@ use App\Services\CourseService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
+use App\Models\CourseStudy; 
 
-
-class CourseController extends Controller
+class courseStudyController extends Controller
 {
-    /**
-     * @var CourseService
-     */
     private $service;
 
     public function __construct(CourseService $service)
@@ -32,22 +25,14 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $records = DB::table('course')->get();
+        $records = CourseStudy::get();
         return view(
             'course',
             compact('records')
             
         );
-        //return Course::all()->toArray();
-
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -59,44 +44,29 @@ class CourseController extends Controller
             throw new APIException('驗證錯誤' , 422);
         }
 
-        $courseForm = [
+        $coursestudyForm = [
             'name' => $request->get('name'),
-            'description' => trim($request->get('description')) ?? '',
+            'point' => $request->get('point'),
+            'content' => trim($request->get('content')) ?? '',
             'outline' => $request->get('outline') ?? '',
         ];
-        $status = Course::create($courseForm);
+        $status = CourseStudy::create($coursestudyForm);
 
-        return ['success' => $status];
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $courseId
-     * @return \App\Http\Resources\CourseResource
-     * @throws APIException
-     */
-    public function show($courseId)
+   
+    public function show($id)
     {
         try {
-            $courseResource = $this->service->getCourseById($courseId);
+            $courseResource = $this->service->getCourseById($id);
         } catch (Exception $e) {
             throw new APIException('找不到對應課程', 404);
         }
         return $courseResource;
+        
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param int $courseId
-     * @return \Illuminate\Http\Response
-     */
-    public function update(
-        Request $request,
-        $courseId
-    ) {
+    public function update(Request $request,$id) {
         try {
             $request->validate([
                 'name' => 'required|string|max:20',
@@ -105,25 +75,21 @@ class CourseController extends Controller
             throw new APIException($e->getMessage() , 422);
         }
 
-        if (! $course = Course::find($courseId)) {
+        if (! $course = CourseStudy::find($id)) {
             throw new APIException('課程找不到', 404);
         }
         $status = $course->update($request->toArray());
         return ['success' => $status];
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $courseId
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($courseId)
+
+    public function destroy($id)
     {
-        if (! $course = Course::find($courseId)) {
+        if (! $course = CourseStudy::find($id)) {
             throw new APIException('課程找不到', 404);
         }
         $status = $course->delete();
         return ['success' => $status];
     }
 }
+
