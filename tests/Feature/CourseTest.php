@@ -37,7 +37,7 @@ class CourseTest extends TestCase
             'description' => 'test',
             'outline' => 'test',
         ]);
-        $response = $this->get('/api/courses/999');
+        $response = $this->get('/api/course/999');
 
         $response->assertStatus(200)
             ->assertExactJson([
@@ -53,7 +53,7 @@ class CourseTest extends TestCase
 
     public function testFailed()
     {
-        $response = $this->get('/api/courses/999');
+        $response = $this->get('/api/course/999');
 
         $response->assertStatus(404)
             ->assertExactJson([
@@ -72,20 +72,22 @@ class CourseTest extends TestCase
         ];
         $response = $this->json(
             'POST',
-            '/api/courses',
+            '/api/course',
             $data
         );
         
         $response->assertStatus(200)
         ->assertExactJson([
-            $data
+            $data,
+            "metadata" => Carbon::now(),
         ]);
+        
     }*/
 
     public function testCreateFailed(){
         $response = $this->json(
             'POST',
-            'api/courses',
+            'api/course',
             [
                 'test' => 'test',
                 'test1' => 'test',
@@ -107,18 +109,18 @@ class CourseTest extends TestCase
             'outline' => 'test',
         ]);
 
-        $response = $this->delete( 'api/courses/999' );
+        $response = $this->delete( 'api/course/999' );
 
         $response->assertStatus(200)
             ->assertExactJson([
-                "message" => true
+                "success" => true
             ]);
     }
     
     public function testDeleteFailed(){
 
 
-        $response = $this->delete( 'api/courses/999' );
+        $response = $this->delete( 'api/course/999' );
 
         $response->assertStatus(404)
             ->assertExactJson([
@@ -129,8 +131,8 @@ class CourseTest extends TestCase
 
     public function testUpdateSuccess(){
         $response = $this->json(
-            'put',
-            'api/courses/13',
+            'PUT',
+            'api/course/13',
             [
                 'id' => '13' ,
                 'name' => 'Search Engine',
@@ -140,16 +142,16 @@ class CourseTest extends TestCase
 
         $response->assertStatus(200)
         ->assertExactJson([
-            "message" => true
+            "success" => true
         ]);
     }
 
     public function testUpdateFailed(){
         $response = $this->json(
-            'put',
-            'api/courses/999',
+            'PUT',
+            'api/course/999',
             [
-                'id' => '13' ,
+                'id' => '16' ,
                 'name' => 'Search Engine',
                 'outline' => 'test'
             ]
