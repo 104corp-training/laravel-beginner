@@ -18,9 +18,9 @@ use App\Models\Student;
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('/{operation}/{sub_operation}', 'Controller@getRequest');
+Route::get('/{resources}/{target}', 'Controller@getRequest');
 
-Route::post('/{operation}', 'Controller@postRequest');
+Route::post('/{target}', 'Controller@postRequest');
 
 //Route::post('/new_class/submit', 'NewCourseController@submit');
 

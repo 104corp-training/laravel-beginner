@@ -1,0 +1,89 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "L5 OpenApi",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "developer@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://api-host.dev.app",
+            "description": "測試區主機"
+        },
+        {
+            "url": "https://api-host.production.app",
+            "description": "正式區主機"
+        },
+        {
+            "url": "http://localhost",
+            "description": "Localhost"
+        }
+    ],
+    "paths": {
+        "/web/pages/{courceId}": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "summary": "閱覽課程資訊",
+                "description": "閱覽課程資訊，以及其修課學生和評論",
+                "operationId": "operationShow",
+                "parameters": [
+                    {
+                        "name": "courceId",
+                        "in": "path",
+                        "description": "ID of cource",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功"
+                    },
+                    "404": {
+                        "description": "資源不存在"
+                    }
+                }
+            }
+        },
+        "/web/upload/{target}": {
+            "get": {
+                "tags": [
+                    "upload"
+                ],
+                "summary": "更改資訊",
+                "description": "新增、更改及刪除目標資源",
+                "operationId": "controllerSubmitRequest",
+                "parameters": [
+                    {
+                        "name": "target",
+                        "in": "path",
+                        "description": "target action",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功"
+                    },
+                    "404": {
+                        "description": "資源不存在"
+                    }
+                }
+            }
+        }
+    }
+}

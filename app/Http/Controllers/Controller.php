@@ -14,15 +14,15 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function getRequest($resource, $action)
+    public function getRequest($resource, $target)
     {
         switch ($resource) {
             case 'pages':
-                return OperationController::show($action);
+                return OperationController::show($target);
                 break;
 
             case 'upload':
-                return $this->submitRequest($action);
+                return $this->submitRequest($target);
                 break;
 
             default:
@@ -31,9 +31,9 @@ class Controller extends BaseController
         }
     }
 
-    public function postRequest(Request $request, $operation)
+    public function postRequest(Request $request, $target)
     {
-        switch ($operation) {
+        switch ($target) {
             case 'new_comment':
                 return Comments::appendComment($request);
                 break;
@@ -52,9 +52,9 @@ class Controller extends BaseController
         }
     }
 
-    public function submitRequest($sub_operation)
+    public function submitRequest($target)
     {
-        switch ($sub_operation) {
+        switch ($target) {
             case 'newCourse':
                 return NewCourseController::mainPage();
                 break;
