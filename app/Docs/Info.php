@@ -6,7 +6,7 @@
 *      title="L5 OpenApi",
 *      description="L5 Swagger OpenApi description",
 *      @OA\Contact(
-*          email="developer@example.com"
+*          email="qazs0205@gmail.com"
 *      ),
 *     @OA\License(
 *         name="Apache 2.0",
