@@ -15,43 +15,43 @@ class Comments extends Model
     static public function mainPage($order = null)
     {
         switch ($order) {
-            case 'create':
-                $target_page = 'new_comment';
+        case 'create':
+            $target_page = 'new_comment';
 
-                $resourse = [
-                    'courses' => Course::getAllCourseName(),
-                    'students' => Student::getAllFullName(),
-                ];
-                break;
+            $resourse = [
+                'courses' => Course::getAllCourseName(),
+                'students' => Student::getAllFullName(),
+            ];
+            break;
 
-            case 'update':
-                $target_page = 'update_comment';
+        case 'update':
+            $target_page = 'update_comment';
 
-                $resourse = [
-                    'comments' => self::all(),
-                    'courses' => Course::getAllCourseName(),
-                    'students' => Student::getAllFullName(),
-                ];
-                break;
+            $resourse = [
+                'comments' => self::all(),
+                'courses' => Course::getAllCourseName(),
+                'students' => Student::getAllFullName(),
+            ];
+            break;
 
-            case 'read':
-                $target_page = 'read_comment';
+        case 'read':
+            $target_page = 'read_comment';
 
-                $resourse = null;
-                break;
+            $resourse = null;
+            break;
 
-            case 'delete':
-                $target_page = 'delete_comment';
+        case 'delete':
+            $target_page = 'delete_comment';
 
-                $resourse = [
-                    'comments' => self::all(),
-                ];;
-                break;
+            $resourse = [
+                'comments' => self::all(),
+            ];;
+            break;
 
-            default:
-                echo "Error: Invalid Comments Order";
-                return;
-                break;
+        default:
+            echo "Error: Invalid Comments Order";
+            return;
+            break;
         }
 
         return view($target_page, $resourse);
@@ -85,12 +85,14 @@ class Comments extends Model
         $score = $_POST['select_score'];
         $comment = $_POST['comment_content'];
 
-        self::where('id', $target_id)->update([
+        self::where('id', $target_id)->update(
+            [
             'student_id' => $student,
             'course_id' => $course,
             'score' => $score,
-            'comment' => $comment
-        ]);
+            'comment' => $comment,
+            ]
+        );
 
         echo "<script language='javascript'> alert('更改評論成功') </script>";
 

@@ -14,6 +14,7 @@ class OperationController extends Controller
      * Use to get operation code and output the correct outout.
      * 
      * @param int $courseId
+     * 
      * @return Response
      */
     static public function show($courseId)

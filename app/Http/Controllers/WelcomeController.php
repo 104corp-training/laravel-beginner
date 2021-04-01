@@ -12,7 +12,7 @@ class WelcomeController extends Controller
     private $_dictionary;
     
     /**
-     * @param Request $request
+     * @param  Request $request
      * @return Factory|View
      */
     public function index()//(Request $request)
@@ -31,17 +31,21 @@ class WelcomeController extends Controller
     public function cache(Request $request)
     {
         if ($cacheTime = Cache::get('profileCacheTime')) {
-            return response()->json([
+            return response()->json(
+                [
                 'time' => $cacheTime,
-             ]);
+                ]
+            );
         }
 
         $now = Carbon::now();
         Cache::set('profileCacheTime', $now, 60);
 
-        return response()->json([
+        return response()->json(
+            [
             'time' => $now,
-        ]);
+            ]
+        );
     }
 
     public function __construct()

@@ -12,10 +12,12 @@ class NewCourseController extends Controller
         $courses_array = Course::getAllCourseName();
         $students_array = Student::getAllFullName();
 
-        return view('new_course',[
+        return view(
+            'new_course', [
             'courses' => $courses_array,
             'students' => $students_array,
-        ]);
+            ]
+        );
     }
 
     public function student()

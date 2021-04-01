@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Cache;
 class ProfileController extends Controller
 {
     /**
-     * @param Request $request
+     * @param  Request $request
      * @return Factory|View
      */
     public function index(Request $request)
@@ -39,16 +39,20 @@ class ProfileController extends Controller
     public function cache(Request $request)
     {
         if ($cacheTime = Cache::get('profileCacheTime')) {
-            return response()->json([
+            return response()->json(
+                [
                 'time' => $cacheTime,
-             ]);
+                ]
+            );
         }
 
         $now = Carbon::now();
         Cache::set('profileCacheTime', $now, 60);
 
-        return response()->json([
+        return response()->json(
+            [
             'time' => $now,
-        ]);
+            ]
+        );
     }
 }
