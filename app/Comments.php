@@ -10,8 +10,20 @@ use Illuminate\Http\Request;
 
 class Comments extends Model
 {
+    /**
+     * Table connected
+     * 
+     * @var string
+     */
     protected $table = 'comment';
 
+    /**
+     * Determint what resource should be sent to the page
+     * 
+     * @param integer $order
+     * 
+     * @return view
+     */
     static public function mainPage($order = null)
     {
         switch ($order) {
@@ -50,7 +62,7 @@ class Comments extends Model
 
         default:
             echo "Error: Invalid Comments Order";
-            return;
+            abort(404);
             break;
         }
 

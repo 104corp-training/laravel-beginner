@@ -27,3 +27,7 @@ laradock
 
 # VS Code files
 .vscode/
+
+# PSR Files
+phpcbf.phar
+phpcs.phar

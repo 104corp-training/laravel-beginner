@@ -21,24 +21,3 @@ Route::get('/', 'WelcomeController@index');
 Route::get('/{resources}/{target}', 'Controller@getRequest');
 
 Route::post('/{resources}/{target}', 'Controller@postRequest');
-
-//Route::post('/new_class/submit', 'NewCourseController@submit');
-
-/*
-Route::get('/read',function(){
-    $body = Course::all();
-    
-    foreach ($body as $elem) {
-        $elem = $elem->courses;
-        foreach ($elem as $key => $value) {
-            echo "<h4>", gettype($value), "</h4>";
-            echo "<h3> $key => $value </h3>";
-        }
-    }
-});
-
-Route::get('/profile', 'ProfileController@index');
-
-Route::get('/profile/cache', 'ProfileController@cache');
-
-*/
