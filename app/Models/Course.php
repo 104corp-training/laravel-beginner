@@ -47,14 +47,7 @@ class Course extends Model
 
     static public function getAllCourseName()
     {
-        $ret = [];
-        $courses = self::all();
-
-        foreach ($courses as $course) {
-            $ret[] = $course->name;
-        }
-
-        return $ret;
+        return self::get('name')->toArray();
     }
 
     public function attendStudents()
