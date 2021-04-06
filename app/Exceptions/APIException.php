@@ -8,6 +8,7 @@ class APIException extends Exception
 {
     /**
      * APIException constructor.
+     *
      * @param string $message
      * @param string $code
      */

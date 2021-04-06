@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Comments;
-use App\CourseStudent;
+use App\Models\Comments;
+use App\Models\CourseStudent;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;

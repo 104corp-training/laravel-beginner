@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Comments;
-use App\CourseStudent;
+use App\Models\Comments;
+use App\Models\CourseStudent;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
@@ -41,7 +41,7 @@ class Student extends Model
     /**
      * Set the user's first name.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setFirstNameAttribute($value)

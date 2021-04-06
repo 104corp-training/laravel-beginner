@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Comments;
-use App\CourseStudent;
+use App\Models\Comments;
+use App\Models\CourseStudent;
 use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
