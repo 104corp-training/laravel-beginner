@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comments;
-use App\Models\CourseStudent;
 use App\User;
 use App\Http\Controllers\Controller;
 use App\Models\Course;

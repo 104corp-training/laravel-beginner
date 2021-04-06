@@ -16,19 +16,33 @@ class Comments extends Model
      * @var string
      */
     protected $table = 'comment';
-    
-    static public function appendComment(Request $request)
-    {
-        $student = $_POST['select_student'];
-        $course = $_POST['select_course'];
-        $score = $_POST['select_score'];
-        $comment = $_POST['comment_content'];
 
+    public function getHttpInput(Request $request)
+    {
+        $ret = [];
+        $ret['student_id'] = $request->input('select_id', 'no_id');
+        $ret['select_student'] = $request->input('select_student', 'no_student');
+        $ret['select_course'] = $request->input('select_course', 'no_course');
+        $ret['select_score'] = $request->input('select_score', 'no_score');
+        $ret['comment_content'] = $request->input('comment_content', 'no_comment');
+        return $ret;
+    }
+    
+    public function constructComment($data)
+    {
         $comments = new Comments;
-        $comments->student_id = $student;
-        $comments->course_id = $course;
-        $comments->score = $score;
-        $comments->comment = $comment;
+        $comments->student_id = $data['select_student'];
+        $comments->course_id = $data['select_course'];
+        $comments->score = $data['select_score'];
+        $comments->comment = $data['comment_content'];
+        return $comments;
+    }
+
+    public function appendComment(Request $request)
+    {
+        $http_input = $this->getHttpInput($request);
+
+        $comments = $this->constructComment($http_input);
 
         $comments->save();
 
@@ -37,20 +51,16 @@ class Comments extends Model
         return self::returnIndex();
     }
 
-    static public function updateComment(Request $request)
+    public function updateComment(Request $request)
     {
-        $target_id = $_POST['select_id'];
-        $student = $_POST['select_student'];
-        $course = $_POST['select_course'];
-        $score = $_POST['select_score'];
-        $comment = $_POST['comment_content'];
+        $http_input = $this->getHttpInput($request);
 
-        self::where('id', $target_id)->update(
+        self::where('id', $http_input['student_id'])->update(
             [
-            'student_id' => $student,
-            'course_id' => $course,
-            'score' => $score,
-            'comment' => $comment,
+            'student_id' => $http_input['select_student'],
+            'course_id' => $http_input['select_course'],
+            'score' => $http_input['select_score'],
+            'comment' => $http_input['comment_content'],
             ]
         );
 
@@ -59,11 +69,11 @@ class Comments extends Model
         return self::returnIndex();
     }
 
-    static public function deleteComment(Request $request)
+    public function deleteComment(Request $request)
     {
-        $target_id = $_POST['select_id'];
+        $http_input = $this->getHttpInput($request);
 
-        self::where('id', $target_id)->delete();
+        self::where('id', $http_input['student_id'])->delete();
 
         echo "<script language='javascript'> alert('刪除評論成功') </script>";
 

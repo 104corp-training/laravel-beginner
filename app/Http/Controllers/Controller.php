@@ -62,15 +62,16 @@ class Controller extends BaseController
 
     public function postRequestComment($request, $target)
     {
+        $main = new Comments;
         switch ($target) {
         case 'new':
-            return Comments::appendComment($request);
+            return $main->appendComment($request);
             break;
         case 'update':
-            return Comments::updateComment($request);
+            return $main->updateComment($request);
             break;
         case 'delete':
-            return Comments::deleteComment($request);
+            return $main->deleteComment($request);
             break;
         default:
             abort(404);
@@ -94,7 +95,7 @@ class Controller extends BaseController
             break;
 
         case 'updateComment':
-            $target_page = 'new_comment';
+            $target_page = 'update_comment';
             $resource = [
                 'comments' => Comments::all(),
                 'courses' => Course::getAllCourseName(),
