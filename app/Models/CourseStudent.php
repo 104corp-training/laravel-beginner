@@ -19,14 +19,20 @@ class CourseStudent extends Model
 
     static public function appendCourse(Request $request)
     {
-        $course_id = $_POST['select_course'];
-        $student_id = $_POST['select_student'];
+        $course_id = $request->input('select_course');
+        $student_id = $request->input('select_student');
         
         $isPostValid = is_numeric($course_id) && is_numeric($student_id);
 
         if ($isPostValid) {
-            $course_name = Course::find($course_id)->name;
+            $course_name = Course::find($course_id, ['name']);
             $student = Student::find($student_id);
+
+            $isCourseAndStudentInvalid = ($course_name == null) or ($student == null);
+            if ($isCourseAndStudentInvalid) {
+                echo "<script language='javascript'> alert('選課失敗：課程或學生不存在') </script>";
+                abort(404);
+            }
 
             $student_fname = $student->first_name;
             $student_lname = $student->last_name;
@@ -45,6 +51,7 @@ class CourseStudent extends Model
 
         } else {
             echo "<script language='javascript'> alert('非法輸入資訊：請重新嘗試') </script>";
+            abort(404);
         }
 
         $body = new WelcomeController;
