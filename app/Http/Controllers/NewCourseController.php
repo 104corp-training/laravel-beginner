@@ -19,9 +19,4 @@ class NewCourseController extends Controller
             ]
         );
     }
-
-    public function student()
-    {
-        return $this->hasOne('App\Student');
-    }
 }
