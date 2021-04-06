@@ -18,6 +18,8 @@ use App\Models\Student;
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('/{resources}/{target}', 'Controller@getRequest');
+Route::get('/pages/{target}', 'OperationController@show');
+
+Route::prefix('upload')->get('/{target}', 'Controller@submitRequest');
 
 Route::post('/{resources}/{target}', 'Controller@postRequest');

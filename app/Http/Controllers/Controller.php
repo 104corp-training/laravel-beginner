@@ -16,23 +16,6 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function getRequest($resource, $target)
-    {
-        switch ($resource) {
-        case 'pages':
-            return OperationController::show($target);
-            break;
-
-        case 'upload':
-            return $this->submitRequest($target);
-            break;
-
-        default:
-            abort(404);
-            break;
-        }
-    }
-
     public function postRequest(Request $request, $resource, $target)
     {
         switch ($resource) {
