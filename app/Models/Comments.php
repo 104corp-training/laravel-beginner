@@ -16,59 +16,7 @@ class Comments extends Model
      * @var string
      */
     protected $table = 'comment';
-
-    /**
-     * Determint what resource should be sent to the page
-     * 
-     * @param integer $order
-     * 
-     * @return view
-     */
-    static public function mainPage($order = null)
-    {
-        switch ($order) {
-        case 'create':
-            $target_page = 'new_comment';
-
-            $resourse = [
-                'courses' => Course::getAllCourseName(),
-                'students' => Student::getAllFullName(),
-            ];
-            break;
-
-        case 'update':
-            $target_page = 'update_comment';
-
-            $resourse = [
-                'comments' => self::all(),
-                'courses' => Course::getAllCourseName(),
-                'students' => Student::getAllFullName(),
-            ];
-            break;
-
-        case 'read':
-            $target_page = 'read_comment';
-
-            $resourse = null;
-            break;
-
-        case 'delete':
-            $target_page = 'delete_comment';
-
-            $resourse = [
-                'comments' => self::all(),
-            ];;
-            break;
-
-        default:
-            echo "Error: Invalid Comments Order";
-            abort(404);
-            break;
-        }
-
-        return view($target_page, $resourse);
-    }
-
+    
     static public function appendComment(Request $request)
     {
         $student = $_POST['select_student'];
