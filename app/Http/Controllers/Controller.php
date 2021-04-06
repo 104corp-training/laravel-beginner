@@ -16,22 +16,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function postRequest(Request $request, $resource, $target)
-    {
-        switch ($resource) {
-        case 'courses':
-            return $this->postRequestCource($request, $target);
-            break;
-        case 'comments':
-            return $this->postRequestComment($request, $target);
-            break;
-        default:
-            abort(404);
-            break;
-        }
-    }
-
-    public function postRequestCource($request, $target)
+    public function postRequestCource(Request $request, $target)
     {
         switch ($target) {
         case 'new':
@@ -43,7 +28,7 @@ class Controller extends BaseController
         }
     }
 
-    public function postRequestComment($request, $target)
+    public function postRequestComment(Request $request, $target)
     {
         $main = new Comments;
         switch ($target) {

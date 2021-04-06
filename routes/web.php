@@ -11,8 +11,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\CourseStudent;
 use App\Http\Controllers\Controller;
+use App\Models\CourseStudent;
 use App\Models\Course;
 use App\Models\Student;
 
@@ -22,4 +22,10 @@ Route::get('/pages/{target}', 'OperationController@show');
 
 Route::prefix('upload')->get('/{target}', 'Controller@submitRequest');
 
-Route::post('/{resources}/{target}', 'Controller@postRequest');
+Route::prefix('courses')->group( function(){
+    Route::post('/{target}', 'Controller@postRequestCource');
+});
+
+Route::prefix('comments')->group( function(){
+    Route::post('/{target}', 'Controller@postRequestComment');
+});
