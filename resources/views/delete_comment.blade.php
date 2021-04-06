@@ -19,24 +19,33 @@
             <?php
                 $isCommentsValid = count($comments);
                 if ($isCommentsValid) {
-                    echo "<label for='select_id'> 選取刪除評論 </label>";
-                    echo "<select name='select_id'>";
-                    foreach ($comments as $comment) {
-                        $id = $comment->id;
-                        $student = $comment->student->getFullNameAttribute();
-                        $course = $comment->course->name;
-                        $score = $comment->score;
-                        $comm = $comment->comment;
+            ?>
 
-                        $str = "評論者：".$student." 課程：".$course." 分數：".$score." 內容：".$comm;
+            <label for='select_id'> 選取刪除評論 </label>
+            <select name='select_id'>
+            
+            <?php
+                foreach ($comments as $comment) {
+                $id = $comment->id;
+                $student = $comment->student->getFullNameAttribute();
+                $course = $comment->course->name;
+                $score = $comment->score;
+                $comm = $comment->comment;
+                $str = "評論者：".$student." 課程：".$course." 分數：".$score." 內容：".$comm;
+            ?>
 
-                        echo "<option value=$id> $str </option>";
-                    }
-                    echo "</select>";
-                    echo "<p>";
-                } else {
-                    echo "<h1>Error: No Comment Exist</h1>";
+            <option value="{{ $id }}">{{ $str }}</option>
+
+            <?php
                 }
+            ?>
+
+            </select>
+
+            <?php
+                } else {
+                echo "<h1>Error: No Comment Exist</h1>";
+            }
             ?>
             <input type='submit' value='送出表單'>
         </form></div>
