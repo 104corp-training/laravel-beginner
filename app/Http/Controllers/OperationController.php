@@ -27,13 +27,16 @@ class OperationController extends Controller
 
         $searchResult = $course->attendStudents;
 
-        $isSearchNotEmpty = !(count($searchResult) == 0);
-        $isSearchValid = ($course != null) ? true : false;
+        $isSearchNotEmpty = empty($searchResult);
+        $isSearchInvalid = ($course == null) ? true : false;
 
         $comment = $course->comments;
-        $isCommentNotEmpty = ( count($comment) != 0) ? true : false;
+        $isCommentNotEmpty = ! empty($comment);
         
-        if ($isSearchValid) {
+        if ( $isSearchInvalid ) {
+            abort(404);
+            
+        } else {
             $ret[ 'searchResult' ] = $isSearchNotEmpty ? ($searchResult) : false;
 
             $ret[ 'name' ] = $course->name;
@@ -43,8 +46,6 @@ class OperationController extends Controller
             $ret[ 'comments' ] = ($isCommentNotEmpty) ? $comment : false;
 
             return view('operation_valid', $ret);
-        } else {
-            abort(404);
         }
     }
 }

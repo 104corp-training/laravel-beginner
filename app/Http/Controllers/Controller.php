@@ -22,6 +22,7 @@ class Controller extends BaseController
         case 'new':
             return CourseStudent::appendCourse($request);
             break;
+            
         default:
             abort(404);
             break;
@@ -35,12 +36,15 @@ class Controller extends BaseController
         case 'new':
             return $main->appendComment($request);
             break;
+
         case 'update':
             return $main->updateComment($request);
             break;
+
         case 'delete':
             return $main->deleteComment($request);
             break;
+
         default:
             abort(404);
             break;

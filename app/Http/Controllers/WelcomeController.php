@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use DB;
+use App\Models\Course;
 
 class WelcomeController extends Controller
 {
@@ -50,21 +50,6 @@ class WelcomeController extends Controller
 
     public function __construct()
     {
-        $data = DB::select('select * from course');
-
-        foreach ($data as $elem) {
-            $arr = [];
-            $index = 0;
-            foreach ($elem as $key => $value) {
-                $arr[ $key ] = $value;
-                $index += 1;
-
-                if ($index >= 4) {
-                    break;
-                }
-            }
-
-            $this->_dictionary[] = $arr;   
-        }
+        $this->_dictionary = Course::get(['id', 'name'])->toArray();
     }
 }

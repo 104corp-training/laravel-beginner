@@ -12,9 +12,6 @@
 |
 */
 use App\Http\Controllers\Controller;
-use App\Models\CourseStudent;
-use App\Models\Course;
-use App\Models\Student;
 
 Route::get('/', 'WelcomeController@index');
 
