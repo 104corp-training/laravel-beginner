@@ -19,6 +19,8 @@
 - 新增學習歷程頁面
   - 首頁各課程連結為學習歷程頁面
 - 新增資料表Hitory
+  - 新增對應migrate物件
+  - 新增對應seeder物件 
   - 新增History相關class: Model、Controller
   - 學習歷程History與Course為多對一關係
 
