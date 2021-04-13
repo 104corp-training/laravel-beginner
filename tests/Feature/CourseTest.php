@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Course;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -60,4 +61,17 @@ class CourseTest extends TestCase
                 "message" => "找不到對應課程",
             ]);
     }
+
+
+
+    // public function testCourseCreate() {
+    //     $response = $this->json(
+    //         'POST',
+    //         '/',
+
+    //     )
+    // }
+
+
+
 }

@@ -21,10 +21,12 @@ Route::get('/profile/info', function () {
     return ['time' => Carbon\Carbon::now()];
 });
 
+// 中繼
 Route::middleware(['apiToken'])->prefix('courses')->group(function () {
     Route::get('/', 'CourseController@index');
     Route::post('/', 'CourseController@store');
     Route::get('/{courseId}', 'CourseController@show');
     Route::put('/{courseId}', 'CourseController@update');
     Route::delete('/{courseId}', 'CourseController@destroy');
+    Route::get('/histories/{courseId}', 'HistoryController@histories');
 });

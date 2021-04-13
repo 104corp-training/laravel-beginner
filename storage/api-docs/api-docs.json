@@ -1,0 +1,261 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "L5 OpenApi",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "developer@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://api-host.dev.app",
+            "description": "測試區主機"
+        },
+        {
+            "url": "https://api-host.production.app",
+            "description": "正式區主機"
+        },
+        {
+            "url": "http://localhost:8000",
+            "description": "Localhost"
+        }
+    ],
+    "paths": {
+        "/api/courses": {
+            "get": {
+                "tags": [
+                    "Course"
+                ],
+                "summary": "取得所有課程",
+                "description": "取得所有課程",
+                "operationId": "AllCoursesShow",
+                "responses": {
+                    "200": {
+                        "description": "請求成功"
+                    },
+                    "404": {
+                        "description": "課程不存在"
+                    }
+                },
+                "security": [
+                    {
+                        "Authenticate": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Course"
+                ],
+                "summary": "新增課程",
+                "operationId": "courseCreate",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "課程名稱",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "課程描述",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "outline",
+                        "in": "query",
+                        "description": "課程大綱",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功"
+                    },
+                    "404": {
+                        "description": "課程不存在"
+                    }
+                },
+                "security": [
+                    {
+                        "Authenticate": []
+                    }
+                ]
+            }
+        },
+        "/api/courses/{courseId}": {
+            "get": {
+                "tags": [
+                    "Course"
+                ],
+                "summary": "以課程id取得課程資訊",
+                "description": "以課程id取得課程資訊",
+                "operationId": "courseShow",
+                "parameters": [
+                    {
+                        "name": "courseId",
+                        "in": "path",
+                        "description": "Course Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功"
+                    },
+                    "404": {
+                        "description": "課程不存在"
+                    }
+                },
+                "security": [
+                    {
+                        "Authenticate": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Course"
+                ],
+                "summary": "刪除課程",
+                "description": "刪除課程",
+                "operationId": "courseDelete",
+                "parameters": [
+                    {
+                        "name": "courseId",
+                        "in": "path",
+                        "description": "Course Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "請求成功"
+                    },
+                    "404": {
+                        "description": "課程不存在"
+                    }
+                },
+                "security": [
+                    {
+                        "Authenticate": []
+                    }
+                ]
+            }
+        },
+        "/api/courses/{id}": {
+            "put": {
+                "tags": [
+                    "Course"
+                ],
+                "summary": "更新課程",
+                "description": "更新課程",
+                "operationId": "courseUpdate",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Course id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "課程名稱",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "課程描述",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "outline",
+                        "in": "query",
+                        "description": "課程大綱",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功"
+                    },
+                    "404": {
+                        "description": "課程不存在"
+                    }
+                },
+                "security": [
+                    {
+                        "Authenticate": []
+                    }
+                ]
+            }
+        },
+        "/api/courses/histories/{courseId}": {
+            "get": {
+                "tags": [
+                    "History"
+                ],
+                "summary": "以課程id取得學習歷程",
+                "description": "以課程id取得學習歷程",
+                "operationId": "historyShow",
+                "parameters": [
+                    {
+                        "name": "courseId",
+                        "in": "path",
+                        "description": "Course History",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "請求成功"
+                    }
+                },
+                "security": [
+                    {
+                        "Authenticate": []
+                    }
+                ]
+            }
+        }
+    }
+}

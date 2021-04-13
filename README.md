@@ -9,4 +9,22 @@
 - Docker
 - Docker Compose
 
+## 作業一
+- 新增課程頁面
+  - localhost:[port]/ 
+- swagger
+  - /api/documentation
+  
+## 作業二
+- 新增學習歷程頁面
+  - 首頁各課程連結為學習歷程頁面
+- 新增資料表Hitory
+  - 新增History相關class: Model、Controller
+  - 學習歷程History與Course為多對一關係
+
+## 作業三
+- RestfulAPI
+  - 新增學習歷程api: /histories/{courseId}
+- 測試
+  - 新增此api的feature test: HistoryTest.php
 
