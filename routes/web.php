@@ -20,4 +20,7 @@ Route::get('/', function () {
 //});
 Route::get('/profile', 'ProfileController@index');
 
+Route::get('/', 'CoursePageController@index');
+
 Route::get('/profile/cache', 'ProfileController@cache');
+

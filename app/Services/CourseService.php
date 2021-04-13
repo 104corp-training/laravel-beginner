@@ -37,4 +37,19 @@ class CourseService
 
         return new CourseResource($course);
     }
+
+    /**
+     * @param $id
+     * @param $form
+     * @return bool
+     * @throws Exception
+     */
+    public function updateCourseById($id, $form) {
+        if(empty($id)) {
+            throw new Exception('invalid course id');
+        }
+
+        return $this->repo->updateCourseById($id, $form);
+    }
+
 }

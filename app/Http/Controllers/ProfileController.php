@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -19,18 +20,28 @@ class ProfileController extends Controller
             [
                 'name' => 'Controller Name',
                 'id' => 1245,
-                'records' => [
-                    [
-                        'id' => 1,
-                        'text' => '1234',
-                    ],
-                    [
-                        'id' => 2,
-                        'text' => '1234',
-                    ],
-                ],
+                'records' => (Course::all()->toArray()),
+
             ]
         );
+
+        // return view(
+        //     'profile',
+        //     [
+        //         'name' => 'Controller Name',
+        //         'id' => 1245,
+        //         'records' => [
+        //             [
+        //                 'id' => 1,
+        //                 'text' => '1234',
+        //             ],
+        //             [
+        //                 'id' => 2,
+        //                 'text' => '1234',
+        //             ],
+        //         ],
+        //     ]
+        // );
     }
 
     /**
